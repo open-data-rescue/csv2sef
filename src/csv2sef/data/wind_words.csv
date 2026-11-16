@@ -1,0 +1,40 @@
+term,beaufort,language,note
+calm,0,en,
+light air,1,en,
+light airs,1,en,
+light breeze,2,en,
+gentle breeze,3,en,
+moderate breeze,4,en,
+fresh breeze,5,en,
+strong breeze,6,en,
+moderate gale,7,en,
+near gale,7,en,
+fresh gale,8,en,
+gale,8,en,
+strong gale,9,en,
+whole gale,10,en,
+storm,10,en,
+violent storm,11,en,
+hurricane,12,en,
+light,2,en,keyword fallback
+gentle,3,en,keyword fallback
+moderate,4,en,keyword fallback
+fresh,5,en,keyword fallback
+strong,6,en,keyword fallback
+calme,0,fr,
+point de vent,0,fr,no wind
+pas de vent,0,fr,no wind
+très légère brise,1,fr,
+legere brise,2,fr,
+légère brise,2,fr,
+petite brise,3,fr,
+jolie brise,4,fr,
+bonne brise,5,fr,
+vent frais,6,fr,
+grand frais,7,fr,
+coup de vent,8,fr,
+fort coup de vent,9,fr,
+tempête,10,fr,
+tempete,10,fr,
+violente tempête,11,fr,
+ouragan,12,fr,

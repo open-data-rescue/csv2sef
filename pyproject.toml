@@ -1,0 +1,36 @@
+[project]
+name = "csv2sef"
+dynamic = ["version"]
+description = "convert transcribed historical weather observations (csv / Excel) into the Station Exchange Format (SEF 1.0.0)."
+readme = "README.md"
+authors = [
+    { name = "Vicky Slonosky", email = "VickyS08@users.noreply.github.com" },
+    { name = "Hervé Hacot", email = "hhacot@users.noreply.github.com" }
+]
+requires-python = ">=3.14"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "cdrutilities>=1.0.1",
+]
+license = "MIT"
+license-files = ["LICEN[CS]E*"]
+
+[project.scripts]
+csv2sef = "csv2sef:main"
+
+[build-system]
+requires = ["setuptools>=68", "setuptools-scm>=8"]
+build-backend = "setuptools.build_meta"
+
+[project.urls]
+Homepage = "https://github.com/open-data-rescue/csv2sef"
+Issues = "https://github.com/open-data-rescue/csv2sef/issues"
+
+[tool.setuptools_scm]
+fallback_version = "0.0.0"
+
+[tool.setuptools.packages.find]
+where = ["src"]

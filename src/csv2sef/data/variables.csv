@@ -1,0 +1,80 @@
+code,description,unit,stat,period,quantity,sef_vbl
+p,Barometer observed (station pressure),inHg,point,0,pressure,p
+p_mean,Barometer daily mean,inHg,mean,day,pressure,p
+p_cor,Barometer corrected,inHg,point,0,pressure,p_cor
+p_cor_mean,Barometer corrected daily mean,inHg,mean,day,pressure,p_cor
+pcor,Barometer corrected,inHg,point,0,pressure,pcor
+pcor_mean,Barometer corrected daily mean,inHg,mean,day,pressure,pcor
+mslp,Mean sea level pressure,inHg,point,0,pressure,mslp
+sym,Sympiesometer,inHg,point,0,pressure,sym
+atb,Barometer attached thermometer,F,point,0,temperature,atb
+ats,Sympiesometer attached thermometer,F,point,0,temperature,ats
+ta,Air temperature,F,point,0,temperature,ta
+ta_cor,Air temperature corrected for index error,F,point,0,temperature,ta_cor
+ta_mean,Air temperature daily mean,F,mean,day,temperature,ta
+ta_range,Air temperature daily range,Fdiff,range,day,,ta_range
+Tn,Minimum temperature,F,minimum,day,temperature,Tn
+Tn_cor,Minimum temperature corrected,F,minimum,day,temperature,Tn_cor
+Tx,Maximum temperature,F,maximum,day,temperature,Tx
+Tx_cor,Maximum temperature corrected,F,maximum,day,temperature,Tx_cor
+Tng,Grass minimum thermometer,F,minimum,day,temperature,Tng
+Tgn,Grass minimum thermometer,F,minimum,day,temperature,Tng
+Txs,Black bulb thermometer in sun,F,maximum,day,temperature,Txs
+ts,Soil temperature,F,point,0,temperature,ts
+n,Cloud cover,tenths,point,0,cloud,n
+nl,Cloud amount,tenths,point,0,cloud,n
+nl_mean,Cloud amount daily mean,tenths,mean,day,cloud,n
+nh,Upper cloud amount,tenths,point,0,cloud,nh
+hl,Lower cloud amount,tenths,point,0,cloud,nl
+skc,Clearness of sky,tenths_clear,point,0,cloud,n
+c,Cloud type,lct,point,0,,c
+cl,Lower cloud type,lct,point,0,,cl
+ch,Upper cloud type,uct,point,0,,ch
+cd,Cloud direction,dir,point,0,direction,cd
+hd,Upper cloud direction,dir,point,0,direction,hd
+cv,Cloud velocity,cloudvel,point,0,,cv
+hv,Upper cloud velocity,cloudvel,point,0,,hv
+dd,Wind direction,dir,point,0,direction,dd
+w,Wind force or speed,Sm,point,0,wind,w
+wf,Wind force,Sm,point,0,wind,w
+w_mean,Wind speed daily mean,mph,mean,day,wind,w
+w_anem,Anemometer wind speed,mph,point,0,wind,w
+w_anem_24,Wind run in 24 hours,mi,sum,day,,w_anem_24
+fx,Maximum wind in 24 hours,mph,maximum,day,wind,fx
+pr,Precipitation amount,in,sum,day,precipitation,rr
+rr,Rain amount,in,sum,day,precipitation,rr
+rrg,Rain on ground,in,sum,day,precipitation,rrg
+sd,Snow depth,in,point,0,snow,sd
+swe,Snow water equivalent,in,point,0,snow,swe
+pr_type,Precipitation type,text,point,day,,pr_type
+rrt,Precipitation type,text,point,day,,pr_type
+ptb,Precipitation time began,hr,point,day,,ptb
+pte,Precipitation time ended,hr,point,day,,pte
+rtb,Rain time began,hr,point,day,,rtb
+rte,Rain time ended,hr,point,day,,rte
+stb,Snow time began,hr,point,day,,stb
+ste,Snow time ended,hr,point,day,,ste
+pr_dur,Precipitation duration,text,point,day,,pr_dur
+tdb,Psychrometer dry bulb,F,point,0,temperature,tdb
+tdb_cor,Dry bulb corrected,F,point,0,temperature,tdb_cor
+tdb_mean,Dry bulb daily mean,F,mean,day,temperature,tdb
+tb,Psychrometer wet bulb,F,point,0,temperature,tb
+tb_cor,Wet bulb corrected,F,point,0,temperature,tb_cor
+tb_mean,Wet bulb daily mean,F,mean,day,temperature,tb
+tbn,Wet bulb minimum,F,minimum,day,temperature,tbn
+tbx,Wet bulb maximum,F,maximum,day,temperature,tbx
+diff,Difference wet-dry bulb,Fdiff,point,0,,diff
+dep_dew,Dew point depression,Fdiff,point,0,,dep_dew
+rh,Relative humidity,%,point,0,humidity,rh
+rh_mean,Relative humidity daily mean,%,mean,day,humidity,rh
+td,Dew point,F,point,0,temperature,td
+td_range,Dew point daily range,Fdiff,range,day,,td_range
+e,Vapour pressure,inHg,point,0,vapour,e
+e_mean,Vapour pressure daily mean,inHg,mean,day,vapour,e
+eee,Evaporation,in,sum,day,precipitation,eee
+oz,Ozone,oz,point,0,,oz
+ww,Weather (present),mno,point,0,,ww
+w1,Weather since last observation,mno,point,0,,w1
+au,Aurora,text,point,0,,au
+remarks,General remarks (free text),text,point,0,,remarks
+fs,Fresh snowfall,in,sum,day,snow,fs

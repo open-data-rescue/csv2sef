@@ -1,0 +1,17 @@
+region,quantity,iso_unit,out_min,low,high,out_max,note
+global,temperature,C,-90,-60,50,60,
+global,pressure,hPa,500,870,1070,1100,station pressure; use canada/regional limits for sea-level stations
+global,vapour,hPa,0,,,80,
+global,humidity,%,0,,,100,
+global,precipitation,mm,0,,300,1000,daily
+global,snow,cm,0,,,1000,
+global,wind,m/s,0,,40,80,
+global,cloud,okta,0,,,9,9 = sky obscured
+canada,temperature,C,-45.5,-42.7,37.8,48.9,Slonosky et al. 2026 Table 9
+canada,pressure,hPa,914.2,965.0,1036.1,1083.5,Slonosky et al. 2026 Table 9
+canada,vapour,hPa,0,,,67.7,Slonosky et al. 2026 Table 9 (2 inHg)
+canada,humidity,%,0,,,100,
+canada,precipitation,mm,0,,,762,Slonosky et al. 2026 Table 9 (30 in)
+canada,snow,cm,0,,,500,
+canada,wind,m/s,0,,40,80,
+canada,cloud,okta,0,,,9,

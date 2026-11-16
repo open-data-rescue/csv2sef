@@ -1,0 +1,91 @@
+alias,unit,description
+f,F,degrees Fahrenheit
+°f,F,degrees Fahrenheit
+ºf,F,degrees Fahrenheit
+degf,F,degrees Fahrenheit
+fahrenheit,F,degrees Fahrenheit
+c,C,degrees Celsius
+°c,C,degrees Celsius
+ºc,C,degrees Celsius
+degc,C,degrees Celsius
+celsius,C,degrees Celsius
+centigrade,C,degrees Celsius
+r,R,degrees Reaumur
+°r,R,degrees Reaumur
+reaumur,R,degrees Reaumur
+réaumur,R,degrees Reaumur
+fdiff,Fdiff,temperature difference in Fahrenheit degrees
+cdiff,Cdiff,temperature difference in Celsius degrees
+inhg,inHg,English inches of mercury
+in hg,inHg,English inches of mercury
+inches hg,inHg,English inches of mercury
+mmhg,mmHg,millimetres of mercury
+mm hg,mmHg,millimetres of mercury
+hpa,hPa,hectopascals
+mb,hPa,millibars
+mbar,hPa,millibars
+parisin,ParisIn,French (Paris) inches of mercury; '27 11.5' = 27 inches 11.5 lines
+paris in,ParisIn,French (Paris) inches of mercury
+pouces,ParisIn,French (Paris) inches of mercury
+parisline,ParisLine,French (Paris) lines of mercury
+lignes,ParisLine,French (Paris) lines of mercury
+in,in,inches (precipitation snow evaporation)
+inches,in,inches (precipitation snow evaporation)
+mm,mm,millimetres (precipitation)
+cm,cm,centimetres (snow)
+mi,mi,miles (wind run)
+miles,mi,miles (wind run)
+%,%,percent
+p,%,percent
+pct,%,percent
+percent,%,percent
+rh,%,percent
+sm,Sm,Smithsonian wind force scale 0-10
+smithsonian,Sm,Smithsonian wind force scale 0-10
+bf,Bf,Beaufort force 0-12
+beaufort,Bf,Beaufort force 0-12
+words,words,descriptive wind force (looked up in wind_words.csv)
+bf words,words,descriptive wind force (looked up in wind_words.csv)
+bf_text,words,descriptive wind force (looked up in wind_words.csv)
+wtext,words,descriptive wind force (looked up in wind_words.csv)
+mph,mph,miles per hour
+kt,kt,knots
+kts,kt,knots
+knots,kt,knots
+m/s,m/s,metres per second
+mps,m/s,metres per second
+km/h,km/h,kilometres per hour
+kmh,km/h,kilometres per hour
+lbsft,lbsft,wind pressure in pounds per square foot ('3 15' = 3 lb 15 oz)
+lb/ft2,lbsft,wind pressure in pounds per square foot
+tenths,tenths,cloud cover in tenths of sky covered
+tenth,tenths,cloud cover in tenths of sky covered
+tenths_clear,tenths_clear,tenths of sky CLEAR (clearness of sky)
+okta,okta,cloud cover in oktas
+oktas,okta,cloud cover in oktas
+dir,dir,compass direction (N NNE ... or degrees)
+direction,dir,compass direction (N NNE ... or degrees)
+deg,dir,compass direction (N NNE ... or degrees)
+lct,lct,lower or general cloud type name
+uct,uct,upper cloud type name
+cloudvel,cloudvel,cloud velocity scale 0-10
+scale,cloudvel,scale 0-10
+mno,mno,weather description (coded with weather_terms.csv)
+weather,mno,weather description (coded with weather_terms.csv)
+text,text,free text kept verbatim
+hr,text,time of day kept as text
+hh:mm,text,time of day kept as text
+oz,oz,ozone scale (no conversion)
+beaufort text,words,descriptive wind force (looked up in wind_words.csv)
+beaufort words,words,descriptive wind force (looked up in wind_words.csv)
+bf text,words,descriptive wind force (looked up in wind_words.csv)
+descriptive,words,descriptive wind force (looked up in wind_words.csv)
+compass,dir,compass direction (N NNE ... or degrees)
+free text,text,free text kept verbatim
+16-point compass,dir,compass direction (N NNE ... or degrees)
+32-point compass,dir,compass direction (N NbE ... or degrees)
+de,De,degrees Delisle (0 = boiling, 150 = freezing): C = 100 - De x 2/3
+delisle,De,degrees Delisle (0 = boiling, 150 = freezing): C = 100 - De x 2/3
+°de,De,degrees Delisle (0 = boiling, 150 = freezing): C = 100 - De x 2/3
+de_frz,De_frz,Delisle degrees counted from the freezing point: C = x * 2/3
+delisle from freezing,De_frz,Delisle degrees counted from the freezing point: C = x * 2/3
