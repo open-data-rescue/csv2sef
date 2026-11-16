@@ -11,5 +11,15 @@ Please cite:
 
 ## Installation
 
+If using this repository, ensure that you have uv installed
+
+1. clone the repo
+2. run `uv sync`
+3. build using `uv build`
+4. run csv2sef using
+```
+uv run csv2sef
+```
+
 ## Development
 
