@@ -1,0 +1,23 @@
+key,value,comment
+# Site,,
+name,Halifax Citadel Hill,
+id,HalifaxCitadelHillCanada,
+lat,44.65,
+lon,-63.61,
+alt,51.5,
+source,ODR,
+link,https://opendatarescue.org,
+project,NORTHERN,
+country,Canada,
+utc_offset,-4,local time minus UTC (hours); leave blank for local mean time from longitude
+data_policy,CC-BY 4.0,
+# Settings,,
+convert_to_utc,yes,
+daily_timestamp,next_midnight,daily and overnight values dated 00:00 of the following day
+range_region,canada,
+tn_night_after,yes,Tn on day d is the minimum of the night d -> d+1
+wind_words_file,wind_words_halifax.csv,
+weather_terms_file,weather_terms_halifax.csv,
+# Variables and columns,,
+variable.p,header_meta=PTC=N|PGC=N,barometer not reduced for temperature or gravity
+column.ww 00:00,period=day,daily weather remarks

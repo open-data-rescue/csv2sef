@@ -1,0 +1,849 @@
+﻿ObservationDate,field_key,value,unit
+1773-01-01 09:00:00,ta,-6,F
+1773-01-02 09:00:00,ta,-7,F
+1773-01-03 09:00:00,ta,-11,F
+1773-01-04 09:00:00,ta,-27,F
+1773-01-05 09:00:00,ta,-37,F
+1773-01-06 09:00:00,ta,-13,F
+1773-01-07 09:00:00,ta,-18,F
+1773-01-08 09:00:00,ta,-35,F
+1773-01-09 09:00:00,ta,-34,F
+1773-01-10 09:00:00,ta,-29,F
+1773-01-11 09:00:00,ta,-41.5,F
+1773-01-12 09:00:00,ta,-43,F
+1773-01-13 09:00:00,ta,-40,F
+1773-01-14 09:00:00,ta,-33,F
+1773-01-15 09:00:00,ta,-33,F
+1773-01-16 09:00:00,ta,-31,F
+1773-01-17 09:00:00,ta,-35,F
+1773-01-18 09:00:00,ta,-6,F
+1773-01-19 09:00:00,ta,5,F
+1773-01-20 09:00:00,ta,-26,F
+1773-01-21 09:00:00,ta,-26,F
+1773-01-22 09:00:00,ta,-35,F
+1773-01-23 09:00:00,ta,-34,F
+1773-01-24 09:00:00,ta,-35,F
+1773-01-25 09:00:00,ta,-34,F
+1773-01-26 09:00:00,ta,-33,F
+1773-01-27 09:00:00,ta,-25,F
+1773-01-28 09:00:00,ta,-40,F
+1773-01-29 09:00:00,ta,-37,F
+1773-01-30 09:00:00,ta,-57,F
+1773-01-31 09:00:00,ta,-57,F
+1773-02-01 09:00:00,ta,-57,F
+1773-02-02 09:00:00,ta,-57,F
+1773-02-03 09:00:00,ta,-57,F
+1773-02-04 09:00:00,ta,-37,F
+1773-02-05 09:00:00,ta,-40,F
+1773-02-06 09:00:00,ta,-42,F
+1773-02-07 09:00:00,ta,-29,F
+1773-02-08 09:00:00,ta,-15,F
+1773-02-09 09:00:00,ta,-20,F
+1773-02-10 09:00:00,ta,-39,F
+1773-02-11 09:00:00,ta,-37,F
+1773-02-12 09:00:00,ta,-35,F
+1773-02-13 09:00:00,ta,-5,F
+1773-02-14 09:00:00,ta,-25,F
+1773-02-15 09:00:00,ta,-20,F
+1773-02-16 09:00:00,ta,-30,F
+1773-02-17 09:00:00,ta,-27,F
+1773-02-18 09:00:00,ta,-35,F
+1773-02-19 09:00:00,ta,-30,F
+1773-02-20 09:00:00,ta,-24,F
+1773-02-21 09:00:00,ta,-28,F
+1773-02-22 09:00:00,ta,-13.5,F
+1773-02-23 09:00:00,ta,3,F
+1773-02-24 09:00:00,ta,-5,F
+1773-02-25 09:00:00,ta,12,F
+1773-02-26 09:00:00,ta,14,F
+1773-02-27 09:00:00,ta,-22,F
+1773-02-28 09:00:00,ta,-1,F
+1773-03-01 09:00:00,ta,-33,F
+1773-03-02 09:00:00,ta,-35,F
+1773-03-03 09:00:00,ta,-40,F
+1773-03-04 09:00:00,ta,-33,F
+1773-03-05 09:00:00,ta,-37,F
+1773-03-06 09:00:00,ta,-37,F
+1773-03-07 09:00:00,ta,-21,F
+1773-03-08 09:00:00,ta,-1,F
+1773-03-09 09:00:00,ta,-12,F
+1773-03-10 09:00:00,ta,-17,F
+1773-03-11 09:00:00,ta,-28.5,F
+1773-03-12 09:00:00,ta,-24,F
+1773-03-13 09:00:00,ta,-20,F
+1773-03-14 09:00:00,ta,-27,F
+1773-03-15 09:00:00,ta,-23,F
+1773-03-16 09:00:00,ta,-14,F
+1773-03-17 09:00:00,ta,4,F
+1773-03-18 09:00:00,ta,0,F
+1773-03-19 09:00:00,ta,-6,F
+1773-03-20 09:00:00,ta,-2,F
+1773-03-21 09:00:00,ta,-20,F
+1773-03-22 09:00:00,ta,-17,F
+1773-03-23 09:00:00,ta,-19,F
+1773-03-24 09:00:00,ta,-12,F
+1773-03-25 09:00:00,ta,2,F
+1773-03-26 09:00:00,ta,-2,F
+1773-03-27 09:00:00,ta,34,F
+1773-03-28 09:00:00,ta,6,F
+1773-03-29 09:00:00,ta,-4,F
+1773-03-30 09:00:00,ta,-6,F
+1773-03-31 09:00:00,ta,-1,F
+1773-04-01 09:00:00,ta,26,F
+1773-04-02 09:00:00,ta,18,F
+1773-04-03 09:00:00,ta,-2,F
+1773-04-04 09:00:00,ta,8,F
+1773-04-05 09:00:00,ta,7,F
+1773-04-06 09:00:00,ta,23,F
+1773-04-07 09:00:00,ta,14,F
+1773-04-08 09:00:00,ta,3,F
+1773-04-09 09:00:00,ta,-9,F
+1773-04-10 09:00:00,ta,empty,F
+1773-04-11 09:00:00,ta,26,F
+1773-04-12 09:00:00,ta,-5,F
+1773-04-13 09:00:00,ta,-2,F
+1773-04-14 09:00:00,ta,-7,F
+1773-04-15 09:00:00,ta,-8,F
+1773-04-16 09:00:00,ta,15,F
+1773-04-17 09:00:00,ta,36,F
+1773-04-18 09:00:00,ta,39,F
+1773-04-19 09:00:00,ta,15,F
+1773-04-20 09:00:00,ta,12,F
+1773-04-21 09:00:00,ta,32,F
+1773-04-22 09:00:00,ta,24,F
+1773-04-23 09:00:00,ta,22,F
+1773-04-24 09:00:00,ta,27,F
+1773-04-25 09:00:00,ta,35,F
+1773-04-26 09:00:00,ta,24,F
+1773-04-27 09:00:00,ta,26,F
+1773-04-28 09:00:00,ta,18,F
+1773-04-29 09:00:00,ta,16,F
+1773-04-30 09:00:00,ta,26,F
+1773-05-01 09:00:00,ta,12,F
+1773-05-02 09:00:00,ta,55,F
+1773-05-03 09:00:00,ta,23,F
+1773-05-04 09:00:00,ta,23,F
+1773-05-05 09:00:00,ta,23,F
+1773-05-06 09:00:00,ta,22,F
+1773-05-07 09:00:00,ta,27,F
+1773-05-08 09:00:00,ta,23,F
+1773-05-09 09:00:00,ta,24,F
+1773-05-10 09:00:00,ta,23,F
+1773-05-11 09:00:00,ta,25,F
+1773-05-12 09:00:00,ta,30,F
+1773-05-13 09:00:00,ta,31,F
+1773-05-14 09:00:00,ta,32,F
+1773-05-15 09:00:00,ta,32,F
+1773-05-16 09:00:00,ta,38,F
+1773-05-17 09:00:00,ta,40,F
+1773-05-18 09:00:00,ta,38,F
+1773-05-19 09:00:00,ta,33.5,F
+1773-05-20 09:00:00,ta,30,F
+1773-05-21 09:00:00,ta,31,F
+1773-05-22 09:00:00,ta,28,F
+1773-05-23 09:00:00,ta,33,F
+1773-05-24 09:00:00,ta,39,F
+1773-05-25 09:00:00,ta,32,F
+1773-05-26 09:00:00,ta,26,F
+1773-05-27 09:00:00,ta,38,F
+1773-05-28 09:00:00,ta,36,F
+1773-05-29 09:00:00,ta,43,F
+1773-05-30 09:00:00,ta,54,F
+1773-05-31 09:00:00,ta,39,F
+1773-06-01 09:00:00,ta,34,F
+1773-06-02 09:00:00,ta,30,F
+1773-06-03 09:00:00,ta,30,F
+1773-06-04 09:00:00,ta,27,F
+1773-06-05 09:00:00,ta,40,F
+1773-06-06 09:00:00,ta,48,F
+1773-06-07 09:00:00,ta,34,F
+1773-06-08 09:00:00,ta,41,F
+1773-06-09 09:00:00,ta,32,F
+1773-06-10 09:00:00,ta,42,F
+1773-06-11 09:00:00,ta,36,F
+1773-06-12 09:00:00,ta,35,F
+1773-06-13 09:00:00,ta,51,F
+1773-06-14 09:00:00,ta,51,F
+1773-06-15 09:00:00,ta,49.5,F
+1773-06-16 09:00:00,ta,38,F
+1773-06-17 09:00:00,ta,41,F
+1773-06-18 09:00:00,ta,41,F
+1773-06-19 09:00:00,ta,51,F
+1773-06-20 09:00:00,ta,43,F
+1773-06-21 09:00:00,ta,53,F
+1773-06-22 09:00:00,ta,48,F
+1773-06-23 09:00:00,ta,51,F
+1773-06-24 09:00:00,ta,47,F
+1773-06-25 09:00:00,ta,47,F
+1773-06-26 09:00:00,ta,empty,F
+1773-06-27 09:00:00,ta,41,F
+1773-06-28 09:00:00,ta,42,F
+1773-06-29 09:00:00,ta,47,F
+1773-06-30 09:00:00,ta,50,F
+1773-07-01 09:00:00,ta,59,F
+1773-07-02 09:00:00,ta,69,F
+1773-07-03 09:00:00,ta,62,F
+1773-07-04 09:00:00,ta,51,F
+1773-07-05 09:00:00,ta,63,F
+1773-07-06 09:00:00,ta,55,F
+1773-07-07 09:00:00,ta,51,F
+1773-07-08 09:00:00,ta,64,F
+1773-07-09 09:00:00,ta,65,F
+1773-07-10 09:00:00,ta,48,F
+1773-07-11 09:00:00,ta,55,F
+1773-07-12 09:00:00,ta,55,F
+1773-07-13 09:00:00,ta,39,F
+1773-07-14 09:00:00,ta,57,F
+1773-07-15 09:00:00,ta,56,F
+1773-07-16 09:00:00,ta,47,F
+1773-07-17 09:00:00,ta,60,F
+1773-07-18 09:00:00,ta,42,F
+1773-07-19 09:00:00,ta,45.5,F
+1773-07-20 09:00:00,ta,45,F
+1773-07-21 09:00:00,ta,59,F
+1773-07-22 09:00:00,ta,51,F
+1773-07-23 09:00:00,ta,56,F
+1773-07-24 09:00:00,ta,50,F
+1773-07-25 09:00:00,ta,55,F
+1773-07-26 09:00:00,ta,53,F
+1773-07-27 09:00:00,ta,60,F
+1773-07-28 09:00:00,ta,58,F
+1773-07-29 09:00:00,ta,60,F
+1773-07-30 09:00:00,ta,67,F
+1773-07-31 09:00:00,ta,51,F
+1773-01-01 15:00:00,ta,0,F
+1773-01-02 15:00:00,ta,-2,F
+1773-01-03 15:00:00,ta,-17,F
+1773-01-04 15:00:00,ta,-24,F
+1773-01-05 15:00:00,ta,-29,F
+1773-01-06 15:00:00,ta,-7,F
+1773-01-07 15:00:00,ta,-12.5,F
+1773-01-08 15:00:00,ta,-32,F
+1773-01-09 15:00:00,ta,-29,F
+1773-01-10 15:00:00,ta,-27,F
+1773-01-11 15:00:00,ta,-38,F
+1773-01-12 15:00:00,ta,-39,F
+1773-01-13 15:00:00,ta,-34,F
+1773-01-14 15:00:00,ta,-28,F
+1773-01-15 15:00:00,ta,-30,F
+1773-01-16 15:00:00,ta,-30,F
+1773-01-17 15:00:00,ta,-24,F
+1773-01-18 15:00:00,ta,-2,F
+1773-01-19 15:00:00,ta,4,F
+1773-01-20 15:00:00,ta,-19,F
+1773-01-21 15:00:00,ta,-20,F
+1773-01-22 15:00:00,ta,-28,F
+1773-01-23 15:00:00,ta,-26,F
+1773-01-24 15:00:00,ta,-28,F
+1773-01-25 15:00:00,ta,-24,F
+1773-01-26 15:00:00,ta,-17,F
+1773-01-27 15:00:00,ta,-20,F
+1773-01-28 15:00:00,ta,-34,F
+1773-01-29 15:00:00,ta,-32,F
+1773-01-30 15:00:00,ta,-57,F
+1773-01-31 15:00:00,ta,-999,F
+1773-02-01 15:00:00,ta,-57,F
+1773-02-02 15:00:00,ta,-999,F
+1773-02-03 15:00:00,ta,-999,F
+1773-02-04 15:00:00,ta,-21,F
+1773-02-05 15:00:00,ta,-34,F
+1773-02-06 15:00:00,ta,-39,F
+1773-02-07 15:00:00,ta,-23,F
+1773-02-08 15:00:00,ta,-5,F
+1773-02-09 15:00:00,ta,-22.5,F
+1773-02-10 15:00:00,ta,-28,F
+1773-02-11 15:00:00,ta,-25,F
+1773-02-12 15:00:00,ta,-23,F
+1773-02-13 15:00:00,ta,-1,F
+1773-02-14 15:00:00,ta,-21,F
+1773-02-15 15:00:00,ta,-12,F
+1773-02-16 15:00:00,ta,-23.5,F
+1773-02-17 15:00:00,ta,-16,F
+1773-02-18 15:00:00,ta,-29,F
+1773-02-19 15:00:00,ta,-21,F
+1773-02-20 15:00:00,ta,-18,F
+1773-02-21 15:00:00,ta,-11,F
+1773-02-22 15:00:00,ta,2,F
+1773-02-23 15:00:00,ta,13,F
+1773-02-24 15:00:00,ta,7,F
+1773-02-25 15:00:00,ta,26,F
+1773-02-26 15:00:00,ta,12,F
+1773-02-27 15:00:00,ta,-13,F
+1773-02-28 15:00:00,ta,-2,F
+1773-03-01 15:00:00,ta,-21,F
+1773-03-02 15:00:00,ta,-29.5,F
+1773-03-03 15:00:00,ta,-26,F
+1773-03-04 15:00:00,ta,-24,F
+1773-03-05 15:00:00,ta,-24,F
+1773-03-06 15:00:00,ta,-27,F
+1773-03-07 15:00:00,ta,-3.5,F
+1773-03-08 15:00:00,ta,12.5,F
+1773-03-09 15:00:00,ta,-8,F
+1773-03-10 15:00:00,ta,-7,F
+1773-03-11 15:00:00,ta,-19,F
+1773-03-12 15:00:00,ta,-1,F
+1773-03-13 15:00:00,ta,-11,F
+1773-03-14 15:00:00,ta,-17,F
+1773-03-15 15:00:00,ta,-4,F
+1773-03-16 15:00:00,ta,7,F
+1773-03-17 15:00:00,ta,11,F
+1773-03-18 15:00:00,ta,12,F
+1773-03-19 15:00:00,ta,21,F
+1773-03-20 15:00:00,ta,17,F
+1773-03-21 15:00:00,ta,-6,F
+1773-03-22 15:00:00,ta,3,F
+1773-03-23 15:00:00,ta,-3,F
+1773-03-24 15:00:00,ta,-4,F
+1773-03-25 15:00:00,ta,14,F
+1773-03-26 15:00:00,ta,24,F
+1773-03-27 15:00:00,ta,33,F
+1773-03-28 15:00:00,ta,16,F
+1773-03-29 15:00:00,ta,4,F
+1773-03-30 15:00:00,ta,10,F
+1773-03-31 15:00:00,ta,36,F
+1773-04-01 15:00:00,ta,40,F
+1773-04-02 15:00:00,ta,15,F
+1773-04-03 15:00:00,ta,19,F
+1773-04-04 15:00:00,ta,14,F
+1773-04-05 15:00:00,ta,24,F
+1773-04-06 15:00:00,ta,36,F
+1773-04-07 15:00:00,ta,21,F
+1773-04-08 15:00:00,ta,12,F
+1773-04-09 15:00:00,ta,14,F
+1773-04-10 15:00:00,ta,30,F
+1773-04-11 15:00:00,ta,25,F
+1773-04-12 15:00:00,ta,14,F
+1773-04-13 15:00:00,ta,10,F
+1773-04-14 15:00:00,ta,1,F
+1773-04-15 15:00:00,ta,11,F
+1773-04-16 15:00:00,ta,27,F
+1773-04-17 15:00:00,ta,47,F
+1773-04-18 15:00:00,ta,40,F
+1773-04-19 15:00:00,ta,31,F
+1773-04-20 15:00:00,ta,24,F
+1773-04-21 15:00:00,ta,39,F
+1773-04-22 15:00:00,ta,28,F
+1773-04-23 15:00:00,ta,33,F
+1773-04-24 15:00:00,ta,47,F
+1773-04-25 15:00:00,ta,42,F
+1773-04-26 15:00:00,ta,32,F
+1773-04-27 15:00:00,ta,37,F
+1773-04-28 15:00:00,ta,24,F
+1773-04-29 15:00:00,ta,25,F
+1773-04-30 15:00:00,ta,32,F
+1773-05-01 15:00:00,ta,29,F
+1773-05-02 15:00:00,ta,46,F
+1773-05-03 15:00:00,ta,29,F
+1773-05-04 15:00:00,ta,29,F
+1773-05-05 15:00:00,ta,33,F
+1773-05-06 15:00:00,ta,31,F
+1773-05-07 15:00:00,ta,36,F
+1773-05-08 15:00:00,ta,39,F
+1773-05-09 15:00:00,ta,31,F
+1773-05-10 15:00:00,ta,29,F
+1773-05-11 15:00:00,ta,35,F
+1773-05-12 15:00:00,ta,38,F
+1773-05-13 15:00:00,ta,38,F
+1773-05-14 15:00:00,ta,45,F
+1773-05-15 15:00:00,ta,43,F
+1773-05-16 15:00:00,ta,48,F
+1773-05-17 15:00:00,ta,55,F
+1773-05-18 15:00:00,ta,49,F
+1773-05-19 15:00:00,ta,37,F
+1773-05-20 15:00:00,ta,39,F
+1773-05-21 15:00:00,ta,38,F
+1773-05-22 15:00:00,ta,35,F
+1773-05-23 15:00:00,ta,37,F
+1773-05-24 15:00:00,ta,43,F
+1773-05-25 15:00:00,ta,33,F
+1773-05-26 15:00:00,ta,35,F
+1773-05-27 15:00:00,ta,60,F
+1773-05-28 15:00:00,ta,40,F
+1773-05-29 15:00:00,ta,54,F
+1773-05-30 15:00:00,ta,64,F
+1773-05-31 15:00:00,ta,43,F
+1773-06-01 15:00:00,ta,39,F
+1773-06-02 15:00:00,ta,30,F
+1773-06-03 15:00:00,ta,33,F
+1773-06-04 15:00:00,ta,38,F
+1773-06-05 15:00:00,ta,50,F
+1773-06-06 15:00:00,ta,60,F
+1773-06-07 15:00:00,ta,44,F
+1773-06-08 15:00:00,ta,37,F
+1773-06-09 15:00:00,ta,42,F
+1773-06-10 15:00:00,ta,54,F
+1773-06-11 15:00:00,ta,40,F
+1773-06-12 15:00:00,ta,52,F
+1773-06-13 15:00:00,ta,55,F
+1773-06-14 15:00:00,ta,65,F
+1773-06-15 15:00:00,ta,45,F
+1773-06-16 15:00:00,ta,42,F
+1773-06-17 15:00:00,ta,51,F
+1773-06-18 15:00:00,ta,47,F
+1773-06-19 15:00:00,ta,62,F
+1773-06-20 15:00:00,ta,47,F
+1773-06-21 15:00:00,ta,53,F
+1773-06-22 15:00:00,ta,57,F
+1773-06-23 15:00:00,ta,56,F
+1773-06-24 15:00:00,ta,52,F
+1773-06-25 15:00:00,ta,49,F
+1773-06-26 15:00:00,ta,55,F
+1773-06-27 15:00:00,ta,48,F
+1773-06-28 15:00:00,ta,empty,F
+1773-06-29 15:00:00,ta,51,F
+1773-06-30 15:00:00,ta,56,F
+1773-07-01 15:00:00,ta,70,F
+1773-07-02 15:00:00,ta,62,F
+1773-07-03 15:00:00,ta,45,F
+1773-07-04 15:00:00,ta,63,F
+1773-07-05 15:00:00,ta,70,F
+1773-07-06 15:00:00,ta,55,F
+1773-07-07 15:00:00,ta,68,F
+1773-07-08 15:00:00,ta,80,F
+1773-07-09 15:00:00,ta,73,F
+1773-07-10 15:00:00,ta,56,F
+1773-07-11 15:00:00,ta,65,F
+1773-07-12 15:00:00,ta,52.5,F
+1773-07-13 15:00:00,ta,55,F
+1773-07-14 15:00:00,ta,57,F
+1773-07-15 15:00:00,ta,47,F
+1773-07-16 15:00:00,ta,67,F
+1773-07-17 15:00:00,ta,48.5,F
+1773-07-18 15:00:00,ta,51,F
+1773-07-19 15:00:00,ta,61,F
+1773-07-20 15:00:00,ta,55,F
+1773-07-21 15:00:00,ta,67,F
+1773-07-22 15:00:00,ta,66,F
+1773-07-23 15:00:00,ta,67,F
+1773-07-24 15:00:00,ta,56,F
+1773-07-25 15:00:00,ta,57,F
+1773-07-26 15:00:00,ta,66.5,F
+1773-07-27 15:00:00,ta,63,F
+1773-07-28 15:00:00,ta,71,F
+1773-07-29 15:00:00,ta,77,F
+1773-07-30 15:00:00,ta,71,F
+1773-07-31 15:00:00,ta,58,F
+1773-01-01 20:00:00,dd,west,dir
+1773-01-02 20:00:00,dd,south-west,dir
+1773-01-03 20:00:00,dd,north,dir
+1773-01-04 20:00:00,dd,north-west,dir
+1773-01-05 20:00:00,dd,south-west,dir
+1773-01-06 20:00:00,dd,south-west,dir
+1773-01-07 20:00:00,dd,west,dir
+1773-01-08 20:00:00,dd,north-west,dir
+1773-01-09 20:00:00,dd,north-west,dir
+1773-01-10 20:00:00,dd,north-west,dir
+1773-01-11 20:00:00,dd,north-west,dir
+1773-01-12 20:00:00,dd,north-west,dir
+1773-01-13 20:00:00,dd,north-west,dir
+1773-01-14 20:00:00,dd,north-west,dir
+1773-01-15 20:00:00,dd,north-west,dir
+1773-01-16 20:00:00,dd,north-west,dir
+1773-01-17 20:00:00,dd,west,dir
+1773-01-18 20:00:00,dd,south-west,dir
+1773-01-19 20:00:00,dd,north-east,dir
+1773-01-20 20:00:00,dd,north-west,dir
+1773-01-21 20:00:00,dd,north-west,dir
+1773-01-22 20:00:00,dd,west,dir
+1773-01-23 20:00:00,dd,west,dir
+1773-01-24 20:00:00,dd,west,dir
+1773-01-25 20:00:00,dd,south-west,dir
+1773-01-26 20:00:00,dd,calm,dir
+1773-01-27 20:00:00,dd,north-west,dir
+1773-01-28 20:00:00,dd,north-west,dir
+1773-01-29 20:00:00,dd,north-west,dir
+1773-01-30 20:00:00,dd,west,dir
+1773-01-31 20:00:00,dd,west,dir
+1773-02-01 20:00:00,dd,south-west,dir
+1773-02-02 20:00:00,dd,north-west,dir
+1773-02-03 20:00:00,dd,south-west,dir
+1773-02-04 20:00:00,dd,south-west,dir
+1773-02-05 20:00:00,dd,north-west,dir
+1773-02-06 20:00:00,dd,west,dir
+1773-02-07 20:00:00,dd,north-west,dir
+1773-02-08 20:00:00,dd,south-east,dir
+1773-02-09 20:00:00,dd,north,dir
+1773-02-10 20:00:00,dd,west,dir
+1773-02-11 20:00:00,dd,north,dir
+1773-02-12 20:00:00,dd,west,dir
+1773-02-13 20:00:00,dd,north-west,dir
+1773-02-14 20:00:00,dd,north-west,dir
+1773-02-15 20:00:00,dd,west,dir
+1773-02-16 20:00:00,dd,north-west,dir
+1773-02-17 20:00:00,dd,west,dir
+1773-02-18 20:00:00,dd,north-west,dir
+1773-02-19 20:00:00,dd,north-west,dir
+1773-02-20 20:00:00,dd,north-west,dir
+1773-02-21 20:00:00,dd,west,dir
+1773-02-22 20:00:00,dd,west,dir
+1773-02-23 20:00:00,dd,west,dir
+1773-02-24 20:00:00,dd,west,dir
+1773-02-25 20:00:00,dd,south,dir
+1773-02-26 20:00:00,dd,north-west,dir
+1773-02-27 20:00:00,dd,south-west,dir
+1773-02-28 20:00:00,dd,west,dir
+1773-03-01 20:00:00,dd,north-west,dir
+1773-03-02 20:00:00,dd,north-west,dir
+1773-03-03 20:00:00,dd,west,dir
+1773-03-04 20:00:00,dd,north-west,dir
+1773-03-05 20:00:00,dd,west,dir
+1773-03-06 20:00:00,dd,north-west,dir
+1773-03-07 20:00:00,dd,west,dir
+1773-03-08 20:00:00,dd,south-west,dir
+1773-03-09 20:00:00,dd,north-west,dir
+1773-03-10 20:00:00,dd,north-west,dir
+1773-03-11 20:00:00,dd,north-west,dir
+1773-03-12 20:00:00,dd,north-west,dir
+1773-03-13 20:00:00,dd,north-west,dir
+1773-03-14 20:00:00,dd,north-west,dir
+1773-03-15 20:00:00,dd,west,dir
+1773-03-16 20:00:00,dd,north-west,dir
+1773-03-17 20:00:00,dd,north-west,dir
+1773-03-18 20:00:00,dd,north-west,dir
+1773-03-19 20:00:00,dd,west,dir
+1773-03-20 20:00:00,dd,west,dir
+1773-03-21 20:00:00,dd,north,dir
+1773-03-22 20:00:00,dd,west,dir
+1773-03-23 20:00:00,dd,west,dir
+1773-03-24 20:00:00,dd,north-west,dir
+1773-03-25 20:00:00,dd,east,dir
+1773-03-26 20:00:00,dd,east,dir
+1773-03-27 20:00:00,dd,west,dir
+1773-03-28 20:00:00,dd,west,dir
+1773-03-29 20:00:00,dd,north-west,dir
+1773-03-30 20:00:00,dd,north-west,dir
+1773-03-31 20:00:00,dd,west,dir
+1773-04-01 20:00:00,dd,west,dir
+1773-04-02 20:00:00,dd,north-east,dir
+1773-04-03 20:00:00,dd,west,dir
+1773-04-04 20:00:00,dd,north-west,dir
+1773-04-05 20:00:00,dd,east,dir
+1773-04-06 20:00:00,dd,west,dir
+1773-04-07 20:00:00,dd,north-east,dir
+1773-04-08 20:00:00,dd,north-east,dir
+1773-04-09 20:00:00,dd,east,dir
+1773-04-10 20:00:00,dd,calm,dir
+1773-04-11 20:00:00,dd,east,dir
+1773-04-12 20:00:00,dd,north-west,dir
+1773-04-13 20:00:00,dd,north-west,dir
+1773-04-14 20:00:00,dd,north-west,dir
+1773-04-15 20:00:00,dd,north-west,dir
+1773-04-16 20:00:00,dd,south-east,dir
+1773-04-17 20:00:00,dd,west,dir
+1773-04-18 20:00:00,dd,south-east,dir
+1773-04-19 20:00:00,dd,north-west,dir
+1773-04-20 20:00:00,dd,north-west,dir
+1773-04-21 20:00:00,dd,south,dir
+1773-04-22 20:00:00,dd,north-east,dir
+1773-04-23 20:00:00,dd,south-west,dir
+1773-04-24 20:00:00,dd,south-west,dir
+1773-04-25 20:00:00,dd,west,dir
+1773-04-26 20:00:00,dd,east,dir
+1773-04-27 20:00:00,dd,south-east,dir
+1773-04-28 20:00:00,dd,east,dir
+1773-04-29 20:00:00,dd,east,dir
+1773-04-30 20:00:00,dd,south-east,dir
+1773-05-01 20:00:00,dd,north-east,dir
+1773-05-02 20:00:00,dd,south-east,dir
+1773-05-03 20:00:00,dd,north-west,dir
+1773-05-04 20:00:00,dd,north,dir
+1773-05-05 20:00:00,dd,north-west,dir
+1773-05-06 20:00:00,dd,north-west,dir
+1773-05-07 20:00:00,dd,east,dir
+1773-05-08 20:00:00,dd,south,dir
+1773-05-09 20:00:00,dd,north-east,dir
+1773-05-10 20:00:00,dd,east,dir
+1773-05-11 20:00:00,dd,north-west,dir
+1773-05-12 20:00:00,dd,north,dir
+1773-05-13 20:00:00,dd,north-west,dir
+1773-05-14 20:00:00,dd,north-west,dir
+1773-05-15 20:00:00,dd,north,dir
+1773-05-16 20:00:00,dd,calm,dir
+1773-05-17 20:00:00,dd,south,dir
+1773-05-18 20:00:00,dd,east,dir
+1773-05-19 20:00:00,dd,east,dir
+1773-05-20 20:00:00,dd,east,dir
+1773-05-21 20:00:00,dd,north-east,dir
+1773-05-22 20:00:00,dd,north-east,dir
+1773-05-23 20:00:00,dd,calm,dir
+1773-05-24 20:00:00,dd,south,dir
+1773-05-25 20:00:00,dd,north-east,dir
+1773-05-26 20:00:00,dd,north-east,dir
+1773-05-27 20:00:00,dd,south-west,dir
+1773-05-28 20:00:00,dd,north,dir
+1773-05-29 20:00:00,dd,south-east,dir
+1773-05-30 20:00:00,dd,east,dir
+1773-05-31 20:00:00,dd,north-west,dir
+1773-06-01 20:00:00,dd,north-east,dir
+1773-06-02 20:00:00,dd,north-east,dir
+1773-06-03 20:00:00,dd,north,dir
+1773-06-04 20:00:00,dd,east,dir
+1773-06-05 20:00:00,dd,south,dir
+1773-06-06 20:00:00,dd,south,dir
+1773-06-07 20:00:00,dd,north-west,dir
+1773-06-08 20:00:00,dd,north,dir
+1773-06-09 20:00:00,dd,north,dir
+1773-06-10 20:00:00,dd,south-west,dir
+1773-06-11 20:00:00,dd,north-west,dir
+1773-06-12 20:00:00,dd,north,dir
+1773-06-13 20:00:00,dd,south,dir
+1773-06-14 20:00:00,dd,south-east,dir
+1773-06-15 20:00:00,dd,north-east,dir
+1773-06-16 20:00:00,dd,north,dir
+1773-06-17 20:00:00,dd,north-west,dir
+1773-06-18 20:00:00,dd,north,dir
+1773-06-19 20:00:00,dd,south-east,dir
+1773-06-20 20:00:00,dd,east,dir
+1773-06-21 20:00:00,dd,south-west,dir
+1773-06-22 20:00:00,dd,north-west,dir
+1773-06-23 20:00:00,dd,north-west,dir
+1773-06-24 20:00:00,dd,north,dir
+1773-06-25 20:00:00,dd,north-east,dir
+1773-06-26 20:00:00,dd,north-east,dir
+1773-06-27 20:00:00,dd,north-west,dir
+1773-06-28 20:00:00,dd,north-east,dir
+1773-06-29 20:00:00,dd,east,dir
+1773-06-30 20:00:00,dd,east,dir
+1773-07-01 20:00:00,dd,east,dir
+1773-07-02 20:00:00,dd,north-west,dir
+1773-07-03 20:00:00,dd,north,dir
+1773-07-04 20:00:00,dd,south-west,dir
+1773-07-05 20:00:00,dd,south-west,dir
+1773-07-06 20:00:00,dd,north-east,dir
+1773-07-07 20:00:00,dd,south-west,dir
+1773-07-08 20:00:00,dd,south-west,dir
+1773-07-09 20:00:00,dd,south-west,dir
+1773-07-10 20:00:00,dd,north,dir
+1773-07-11 20:00:00,dd,north-west,dir
+1773-07-12 20:00:00,dd,north-west,dir
+1773-07-13 20:00:00,dd,north,dir
+1773-07-14 20:00:00,dd,south-west,dir
+1773-07-15 20:00:00,dd,south,dir
+1773-07-16 20:00:00,dd,south-west,dir
+1773-07-17 20:00:00,dd,south-west,dir
+1773-07-18 20:00:00,dd,north-east,dir
+1773-07-19 20:00:00,dd,south-west,dir
+1773-07-20 20:00:00,dd,north,dir
+1773-07-21 20:00:00,dd,north-west,dir
+1773-07-22 20:00:00,dd,south-west,dir
+1773-07-23 20:00:00,dd,south-west,dir
+1773-07-24 20:00:00,dd,north,dir
+1773-07-25 20:00:00,dd,north,dir
+1773-07-26 20:00:00,dd,south,dir
+1773-07-27 20:00:00,dd,north-west,dir
+1773-07-28 20:00:00,dd,west,dir
+1773-07-29 20:00:00,dd,south-east,dir
+1773-07-30 20:00:00,dd,south,dir
+1773-07-31 20:00:00,dd,west,dir
+1773-01-01 00:00:00,ww,mostly cloudy,mno
+1773-01-02 00:00:00,ww,fog in forenoon. afternoon cloudy.,mno
+1773-01-03 00:00:00,ww,cloudy forenoon. hazy afternoon. clear at evening.,mno
+1773-01-04 00:00:00,ww,clear,mno
+1773-01-05 00:00:00,ww,clear.,mno
+1773-01-06 00:00:00,ww,cloudy forenoon. clear afternoon.,mno
+1773-01-07 00:00:00,ww,"cloudy day, a little snow about noon",mno
+1773-01-08 00:00:00,ww,thick fog in day. cloudy at evening. clear night. ,mno
+1773-01-09 00:00:00,ww,hazy forenoon. mostly clear afternoon and night.,mno
+1773-01-10 00:00:00,ww,thick rime. aurora borealis.,mno
+1773-01-11 00:00:00,ww,thick rime. aurora borealis.,mno
+1773-01-12 00:00:00,ww,thick rime. little haze about noon. from 11am to 1,mno
+1773-01-13 00:00:00,ww,"hazy day, clear at night",mno
+1773-01-14 00:00:00,ww,"hazy day, very much.",mno
+1773-01-15 00:00:00,ww,hazy day very much. at 1pm the mercury began to ri,mno
+1773-01-16 00:00:00,ww,very hazy in the morning. clear afternoon and nigh,mno
+1773-01-17 00:00:00,ww,"clear, high wind in the night. aurora borealis.",mno
+1773-01-18 00:00:00,ww,"cloudy, snow in the night",mno
+1773-01-19 00:00:00,ww,cloudy. snow mostly all day. 2 inches deep of snow,mno
+1773-01-20 00:00:00,ww,clear. aurora borealis.,mno
+1773-01-21 00:00:00,ww,thick fog in morning. hazy day. aurora borealis.,mno
+1773-01-22 00:00:00,ww,clear. halo and 3 parhelia noon. aurora borealis.,mno
+1773-01-23 00:00:00,ww,clear. aurora borealis.,mno
+1773-01-24 00:00:00,ww,clear. aurora borealis.,mno
+1773-01-25 00:00:00,ww,clear. aurora borealis.,mno
+1773-01-26 00:00:00,ww,cloudy morning. rest mostly clear. aurora borealis,mno
+1773-01-27 00:00:00,ww,hazy. frigis spicula. aurora borealis.,mno
+1773-01-28 00:00:00,ww,hazy. clear at evening.,mno
+1773-01-29 00:00:00,ww,hazy,mno
+1773-01-30 00:00:00,ww,hazy forenoon. clear afternoon. at 8am brought the,mno
+1773-01-31 00:00:00,ww,clear. mercury in the bulb at noon. afternoon rose,mno
+1773-02-01 00:00:00,ww,clear. aurora borealis.,mno
+1773-02-02 00:00:00,ww,fog at noon. clear day. aurora borealis.,mno
+1773-02-03 00:00:00,ww,foggy morning. clear day.,mno
+1773-02-04 00:00:00,ww,clear,mno
+1773-02-05 00:00:00,ww,clear,mno
+1773-02-06 00:00:00,ww,clear. aurora borealis.,mno
+1773-02-07 00:00:00,ww,clear day. cloudy at evening. snow in the night.,mno
+1773-02-08 00:00:00,ww,cloudy. snow in afternoon & night,mno
+1773-02-09 00:00:00,ww,drift in morning; hazy day. aurora borealis.,mno
+1773-02-10 00:00:00,ww,clear. aurora borealis.,mno
+1773-02-11 00:00:00,ww,"clear at noon, rest hazy.",mno
+1773-02-12 00:00:00,ww,clear forenoon. cloudy afternoon. snow at night.,mno
+1773-02-13 00:00:00,ww,"clear at noon, rest cloudy. high winds & much snow",mno
+1773-02-14 00:00:00,ww,"hazy day, clear in the evening",mno
+1773-02-15 00:00:00,ww,clear morning. cloudy day. high winds & drift in t,mno
+1773-02-16 00:00:00,ww,high winds and hazy. storm wind and drift.,mno
+1773-02-17 00:00:00,ww,clear forenoon. hazy afternoon. double halo and pa,mno
+1773-02-18 00:00:00,ww,very hazy; a little snow at evening-time; aurora b,mno
+1773-02-19 00:00:00,ww,very hazy. aurora borealis visible,mno
+1773-02-20 00:00:00,ww,hazy. aurora borealis visible.,mno
+1773-02-21 00:00:00,ww,clear. aurora borealis.,mno
+1773-02-22 00:00:00,ww,clear. cloudy night.,mno
+1773-02-23 00:00:00,ww,clear. aurora borealis.,mno
+1773-02-24 00:00:00,ww,clear.,mno
+1773-02-25 00:00:00,ww,cloudy forenoon. snowy afternoon and night. rain s,mno
+1773-02-26 00:00:00,ww,snow in forenoon. high winds and cloudy afternoon.,mno
+1773-02-27 00:00:00,ww,hazy morning. clear day. snow in the night.,mno
+1773-02-28 00:00:00,ww,"hazy afternoon, rest clear",mno
+1773-03-01 00:00:00,ww,hazy morning. clear day. a great mist over the sea,mno
+1773-03-02 00:00:00,ww,very hazy. clear at evening and night. aurora bore,mno
+1773-03-03 00:00:00,ww,clear,mno
+1773-03-04 00:00:00,ww,clear,mno
+1773-03-05 00:00:00,ww,clear,mno
+1773-03-06 00:00:00,ww,clear,mno
+1773-03-07 00:00:00,ww,clear. aurora borealis.,mno
+1773-03-08 00:00:00,ww,cloudy. a little snow & drift about noon. clear ni,mno
+1773-03-09 00:00:00,ww,clear. aurora borealis.,mno
+1773-03-10 00:00:00,ww,"cloudy day, clear night. aurora borealis.",mno
+1773-03-11 00:00:00,ww,hazy morning. clear day. aurora borealis.,mno
+1773-03-12 00:00:00,ww,cloudy morning. clear day. aurora borealis.,mno
+1773-03-13 00:00:00,ww,flying clouds in morning. clear day. aurora boreal,mno
+1773-03-14 00:00:00,ww,clear. aurora borealis.,mno
+1773-03-15 00:00:00,ww,clear. aurora borealis.,mno
+1773-03-16 00:00:00,ww,clear forenoon. snow afternoon and night.,mno
+1773-03-17 00:00:00,ww,cloudy morning and night. clear day.,mno
+1773-03-18 00:00:00,ww,cloudy morning. clear day. aurora borealis.,mno
+1773-03-19 00:00:00,ww,clear. aurora borealis.,mno
+1773-03-20 00:00:00,ww,clear. aurora borealis.,mno
+1773-03-21 00:00:00,ww,clear. aurora borealis.,mno
+1773-03-22 00:00:00,ww,clear. some clouds in afternoon. aurora borealis.,mno
+1773-03-23 00:00:00,ww,clear. aurora borealis.,mno
+1773-03-24 00:00:00,ww,clear about noon; rest cloudy,mno
+1773-03-25 00:00:00,ww,cloudy day; clear night. aurora borealis.,mno
+1773-03-26 00:00:00,ww,clear. aurora borealis.,mno
+1773-03-27 00:00:00,ww,much rain fell in morning. clear day.,mno
+1773-03-28 00:00:00,ww,"cloudy morning, clear day. great thaw with rain. a",mno
+1773-03-29 00:00:00,ww,clear,mno
+1773-03-30 00:00:00,ww,clear. aurora borealis.,mno
+1773-03-31 00:00:00,ww,clear forenoon. cloudy afternoon and night.,mno
+1773-04-01 00:00:00,ww,clear about noon. rest cloudy. snow in the night.,mno
+1773-04-02 00:00:00,ww,snow in morning. clear evening and night.,mno
+1773-04-03 00:00:00,ww,clear,mno
+1773-04-04 00:00:00,ww,cloudy. some snow in afternoon. aurora borealis.,mno
+1773-04-05 00:00:00,ww,cloudy. much snow in the night.,mno
+1773-04-06 00:00:00,ww,clear morning with drift. cloudy day.,mno
+1773-04-07 00:00:00,ww,"cloudy, snow and drift afternoon and evening.",mno
+1773-04-08 00:00:00,ww,clear,mno
+1773-04-09 00:00:00,ww,clear,mno
+1773-04-10 00:00:00,ww,clear. snow in the night.,mno
+1773-04-11 00:00:00,ww,snow and drift,mno
+1773-04-12 00:00:00,ww,clear day. cloudy evening. aurora borealis.,mno
+1773-04-13 00:00:00,ww,clear. aurora borealis.,mno
+1773-04-14 00:00:00,ww,clear forenoon. cloudy afternoon.,mno
+1773-04-15 00:00:00,ww,cloudy,mno
+1773-04-16 00:00:00,ww,cloudy. rain and snow in the night.,mno
+1773-04-17 00:00:00,ww,cloudy. clear afternoon.,mno
+1773-04-18 00:00:00,ww,cloudy. rain afternoon. snow in the night.,mno
+1773-04-19 00:00:00,ww,clear morning. cloudy day. aurora borealis.,mno
+1773-04-20 00:00:00,ww,clear day.,mno
+1773-04-21 00:00:00,ww,showers of snow forenoon. much show afternoon. sho,mno
+1773-04-22 00:00:00,ww,showers of snow in morning. cloudy day. aurora bor,mno
+1773-04-23 00:00:00,ww,cloudy morning. clear day. aurora borealis.,mno
+1773-04-24 00:00:00,ww,clear. aurora borealis.,mno
+1773-04-25 00:00:00,ww,clear. light clouds in afternoon.,mno
+1773-04-26 00:00:00,ww,"cloudy, snow in the night.",mno
+1773-04-27 00:00:00,ww,snow and drift.,mno
+1773-04-28 00:00:00,ww,snow and drift with high wind in forenoon. cloudy ,mno
+1773-04-29 00:00:00,ww,a little snow in morning. clear day.,mno
+1773-04-30 00:00:00,ww,snow through the day.,mno
+1773-05-01 00:00:00,ww,clear afternoon; rest cloudy,mno
+1773-05-02 00:00:00,ww,"cloudy, a little snow in the night",mno
+1773-05-03 00:00:00,ww,"cloudy, snow in forenoon",mno
+1773-05-04 00:00:00,ww,"cloudy, snow in forenoon",mno
+1773-05-05 00:00:00,ww,cloudy morning; clear day,mno
+1773-05-06 00:00:00,ww,snow and drifts in forenoon. clear afternoon. clou,mno
+1773-05-07 00:00:00,ww,cloudy morning and evening. rest clear. aurora bor,mno
+1773-05-08 00:00:00,ww,clear day. cloudy night.,mno
+1773-05-09 00:00:00,ww,cloudy,mno
+1773-05-10 00:00:00,ww,cloudy,mno
+1773-05-11 00:00:00,ww,clear. aurora borealis.,mno
+1773-05-12 00:00:00,ww,cloudy forenoon. snow and sleet afternoon.,mno
+1773-05-13 00:00:00,ww,drizzling in morning. cloudy day.,mno
+1773-05-14 00:00:00,ww,"cloudy day, clear night",mno
+1773-05-15 00:00:00,ww,fog in morning. clear day.,mno
+1773-05-16 00:00:00,ww,clear at noon. rest mostly cloudy.,mno
+1773-05-17 00:00:00,ww,cloudy. rain evening and night.,mno
+1773-05-18 00:00:00,ww,cloudy,mno
+1773-05-19 00:00:00,ww,cloudy,mno
+1773-05-20 00:00:00,ww,cloudy,mno
+1773-05-21 00:00:00,ww,clear about noon. rest cloudy.,mno
+1773-05-22 00:00:00,ww,showers of snow through the day.,mno
+1773-05-23 00:00:00,ww,clear about noon. rest cloudy.,mno
+1773-05-24 00:00:00,ww,cloudy forenoon. rain afternoon and night.,mno
+1773-05-25 00:00:00,ww,wind and cloudy.,mno
+1773-05-26 00:00:00,ww,cloudy forenoon. clear afternoon,mno
+1773-05-27 00:00:00,ww,cloudy forenoon. clear afternoon with high wind. s,mno
+1773-05-28 00:00:00,ww,cloudy,mno
+1773-05-29 00:00:00,ww,mostly clear,mno
+1773-05-30 00:00:00,ww,"clear forenoon. rain, thunder, and lightning in af",mno
+1773-05-31 00:00:00,ww,cloudy,mno
+1773-06-01 00:00:00,ww,foggy day. high wind and rain at night.,mno
+1773-06-02 00:00:00,ww,"high wind, snow, and drift",mno
+1773-06-03 00:00:00,ww,clear,mno
+1773-06-04 00:00:00,ww,clear,mno
+1773-06-05 00:00:00,ww,clear morning. cloudy day. rain in the night.,mno
+1773-06-06 00:00:00,ww,several showers of rain,mno
+1773-06-07 00:00:00,ww,shower of snow in morning. rest mostly cloudy.,mno
+1773-06-08 00:00:00,ww,showers of snow and sleet in afternoon. rest cloud,mno
+1773-06-09 00:00:00,ww,cloudy,mno
+1773-06-10 00:00:00,ww,cloudy forenoon. high wind and flying clouds after,mno
+1773-06-11 00:00:00,ww,cloudy with high wind in afternoon. small rain in ,mno
+1773-06-12 00:00:00,ww,cloudy forenoon. clear afternoon.,mno
+1773-06-13 00:00:00,ww,cloudy,mno
+1773-06-14 00:00:00,ww,cloudy with rain in forenoon. clear night.,mno
+1773-06-15 00:00:00,ww,foggy and cloudy. rain at evening-time.,mno
+1773-06-16 00:00:00,ww,foggy. small rain in the night.,mno
+1773-06-17 00:00:00,ww,cloudy,mno
+1773-06-18 00:00:00,ww,cloudy morning. clear day.,mno
+1773-06-19 00:00:00,ww,cloudy. showers in afternoon and evening.,mno
+1773-06-20 00:00:00,ww,clear,mno
+1773-06-21 00:00:00,ww,clear morning. cloudy day. rain in evening and nig,mno
+1773-06-22 00:00:00,ww,clear forenoon. cloudy afternoon. showers in the n,mno
+1773-06-23 00:00:00,ww,cloudy,mno
+1773-06-24 00:00:00,ww,clear morning. rest mostly cloudy.,mno
+1773-06-25 00:00:00,ww,cloudy,mno
+1773-06-26 00:00:00,ww,cloudy,mno
+1773-06-27 00:00:00,ww,cloudy forenoon. clear afternoon.,mno
+1773-06-28 00:00:00,ww,cloudy,mno
+1773-06-29 00:00:00,ww,cloudy morning. clear day.,mno
+1773-06-30 00:00:00,ww,"cloudy, thunder, lightning, and rain in the night",mno
+1773-07-01 00:00:00,ww,cloudy. thunder and rain afternoon.,mno
+1773-07-02 00:00:00,ww,cloudy. thunder about noon.,mno
+1773-07-03 00:00:00,ww,clear forenoon. cloudy afternoon. rain at evening-,mno
+1773-07-04 00:00:00,ww,clear,mno
+1773-07-05 00:00:00,ww,clear forenoon. cloudy afternoon.,mno
+1773-07-06 00:00:00,ww,cloudy forenoon. clear at noon. afternoon foggy.,mno
+1773-07-07 00:00:00,ww,clear,mno
+1773-07-08 00:00:00,ww,clear forenoon. cloudy afternoon. much lightning i,mno
+1773-07-09 00:00:00,ww,mostly cloudy. thunder at a distance in forenoon.,mno
+1773-07-10 00:00:00,ww,cloudy,mno
+1773-07-11 00:00:00,ww,clear. aurora borealis.,mno
+1773-07-12 00:00:00,ww,clear forenoon. cloudy afternoon. fog at night.,mno
+1773-07-13 00:00:00,ww,fog in morning. clear day.,mno
+1773-07-14 00:00:00,ww,clear day. rain in the night.,mno
+1773-07-15 00:00:00,ww,showers at noon. rest cloudy.,mno
+1773-07-16 00:00:00,ww,clear day. heavy showers at night.,mno
+1773-07-17 00:00:00,ww,clear morning. cloudy day.,mno
+1773-07-18 00:00:00,ww,cloudy morning. clear day. small rain at night. au,mno
+1773-07-19 00:00:00,ww,showers in forenoon. rest cloudy.,mno
+1773-07-20 00:00:00,ww,small rain in morning. rest mostly clear. aurora b,mno
+1773-07-21 00:00:00,ww,clear,mno
+1773-07-22 00:00:00,ww,clear,mno
+1773-07-23 00:00:00,ww,rain in morning. rest mostly cloudy.,mno
+1773-07-24 00:00:00,ww,fog in morning. clear at noon. cloudy afternoon an,mno
+1773-07-25 00:00:00,ww,clear,mno
+1773-07-26 00:00:00,ww,clear,mno
+1773-07-27 00:00:00,ww,hazy and cloudy forenoon. clear afternoon and nigh,mno
+1773-07-28 00:00:00,ww,clear,mno
+1773-07-29 00:00:00,ww,clear morning. rest hazy with high wind. thunder a,mno
+1773-07-30 00:00:00,ww,cloudy,mno
+1773-07-31 00:00:00,ww,several showers,mno

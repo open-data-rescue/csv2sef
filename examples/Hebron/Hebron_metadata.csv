@@ -1,0 +1,20 @@
+key,value,comment
+# Site,,
+name,Hebron,
+id,HebronMoravian,
+lat,58.198,Hebron (Google Maps); the original transcription gives 55 deg 12.7' N
+lon,-62.626,Hebron (Google Maps); the original transcription gives 60 deg 12.5' W
+alt,60,
+source,ACRE,
+link,,
+project,National Oceanic and Atmospheric Administration Environmental Data Rescue Program,
+country,Canada,
+observer,Moravian Missionaries,
+utc_offset,-4,nearest time zone to the longitude
+data_policy,CC-BY 4.0,
+notes,"Deutsche Ueberseeische Meteorologische Beobachtungen. Position corrected to Hebron: the transcription gives 55 deg 12.7' N, 60 deg 12.5' W",
+# Settings,,
+range_region,canada,
+unit_change,,# if a unit changes partway through the record: <variable>; <unit>; <from YYYY-MM-DD>; <to YYYY-MM-DD>
+# Barometer corrections (SEF header Meta),,
+variable.p,header_meta=PTC=Y|PGC=N,reduced to 0 C; not reduced to standard gravity

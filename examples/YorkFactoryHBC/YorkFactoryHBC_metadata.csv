@@ -1,0 +1,17 @@
+key,value,comment
+# Site,,
+name,York Factory (HBC),
+id,YorkFactoryHBC,
+lat,57.0006,57 deg 0' 2'' N
+lon,-92.3,
+alt,10,estimated from Google Maps (the fort is still standing)
+source,ODR,
+link,https://opendatarescue.org,
+country,Canada,
+observer,Humphrey Marten,likely observer
+utc_offset,-6,nearest time zone to the longitude
+data_policy,CC-BY 4.0,
+# Settings,,
+range_region,canada,
+midnight_means_daily,yes,long file: 00:00 marks the daily weather remarks
+unit_change,,# if a unit changes partway through the record: <variable>; <unit>; <from YYYY-MM-DD>; <to YYYY-MM-DD>
