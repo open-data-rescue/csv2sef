@@ -82,6 +82,15 @@ def resolve_column(index, raw_header, md):
     d = {**base, **over}
     time, label, problem = parse_when(rest)
     problems = [problem] if problem else []
+    # header_meta items left blank in the metadata (e.g. 'PTC=|PGC=' from the template):
+    # warn, and keep them out of the SEF header
+    if d.get("header_meta"):
+        items = [x.strip() for x in str(d["header_meta"]).split("|") if x.strip()]
+        blank = [x.rstrip("= ") for x in items if x.endswith("=")]
+        if blank:
+            problems.append(f"{', '.join(blank)} not filled in (variable.{var} in the metadata: "
+                            f"Y or N) - left out of the SEF header")
+        d["header_meta"] = "|".join(x for x in items if not x.endswith("="))
 
     # unit: header [unit] > metadata column/variable > unit.<var> > variables.csv default
     default_unit = base.get("unit", "")
