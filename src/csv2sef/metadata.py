@@ -63,6 +63,10 @@ TEMPLATE = [
     ("# Units of variables whose header has no [unit]: unit.<variable>", ""),
 ]
 
+UNIT_CHANGE_ROW = ("unit_change", "",
+                   "# if a unit changes partway through the record: <variable>; <unit>; <from YYYY-MM-DD>; "
+                   "<to YYYY-MM-DD>  e.g. ta; R; 1850-01-01; 1852-12-31 (one line per change; leave blank if none)")
+
 DEFAULT_SETTINGS = {
     "convert_to_utc": "yes", "daily_timestamp": "next_midnight", "keep_na": "yes",
     "range_region": "global", "trace_mm": "0.2", "tn_night_after": "no",
@@ -171,7 +175,8 @@ def _load_csv(path, md):
             elif kl.startswith("variable."):
                 md.variables[key[9:].strip()] = _parse_kv(value)
             elif kl.startswith("alias."):
-                md.aliases[key[6:].strip()] = value
+                if value:                                 # blank template line: ignored
+                    md.aliases[key[6:].strip()] = value
             elif kl.startswith("ignore."):
                 if truthy(value or "yes"):
                     md.ignore.add(" ".join(key[7:].split()).lower())
@@ -179,7 +184,7 @@ def _load_csv(path, md):
                 md.columns[" ".join(key[7:].split())] = _parse_kv(value)
             elif kl == "unit_change":
                 parts = [p.strip() for p in value.split(";")]
-                if len(parts) >= 2:
+                if len(parts) >= 2 and parts[0] and parts[1]:      # blank template line: ignored
                     md.unit_changes.append({"var": parts[0], "unit": parts[1],
                                             "from": parts[2] if len(parts) > 2 else "",
                                             "to": parts[3] if len(parts) > 3 else ""})
@@ -234,12 +239,33 @@ def _load_json(path, md):
                         if not k.startswith("_")]
 
 
-def write_template(path, variables=None):
-    """Write a blank metadata csv. variables: list of (code, suggested unit, description)."""
+PRESSURE_CORRECTIONS = "header_meta=PTC=|PGC="
+PRESSURE_COMMENT = ("# fill in Y or N - PTC: reduced to 0 C (temperature correction); "
+                    "PGC: reduced to standard gravity (gravity correction)")
+
+
+def write_template(path, variables=None, pressure=None):
+    """Write a blank metadata csv.
+
+    variables: list of (code, suggested unit, description) for columns without a [unit];
+    pressure: barometer variable codes found in the data (one PTC/PGC line each to fill in).
+    """
     with open(path, "w", encoding="utf-8", newline="") as f:
         w = csv.writer(f)
         w.writerow(["key", "value"])
         for k, v in TEMPLATE:
             w.writerow([k, v])
+        unknown = [code for code, unit, _ in (variables or []) if unit is None]
         for code, unit, desc in (variables or []):
-            w.writerow([f"unit.{code}", unit, f"# {desc}"])
+            if unit is not None:
+                w.writerow([f"unit.{code}", unit, f"# {desc}"])
+        if unknown:
+            w.writerow(["# Columns csv2sef does not recognise: give each its variable code "
+                        "(list: csv2sef variables), or replace alias. by ignore. and write yes", ""])
+            for name in unknown:
+                w.writerow([f"alias.{name}", "", "# UNKNOWN variable"])
+        w.writerow(list(UNIT_CHANGE_ROW))
+        if pressure:
+            w.writerow(["# Barometer corrections (SEF header Meta)", ""])
+            for code in pressure:
+                w.writerow([f"variable.{code}", PRESSURE_CORRECTIONS, PRESSURE_COMMENT])

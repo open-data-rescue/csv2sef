@@ -16,7 +16,7 @@ import sys
 # from . import CITATION
 from . import metadata as mdmod
 from . import pipeline, reader, sef, tables
-from .headers import parse_header
+from .headers import parse_header, split_unit
 
 # from importlib.metadata
 
@@ -33,30 +33,79 @@ def cmd_convert(a):
     print(pipeline.run(a.data, a.metadata, outdir=a.outdir, local_time=a.local))
 
 
+def _long_template_variables(t, known):
+    """One-value-per-line files: unit.<variable> lines for variables whose rows have no unit,
+    and the barometer variables (for the PTC/PGC line)."""
+    lc = reader.long_columns(t.headers)
+    md = mdmod.Metadata()
+    names, has_unit = [], {}
+    for _, row in t.rows:
+        name = row[lc["variable"]].strip()
+        if not name:
+            continue
+        if name not in has_unit:
+            names.append(name)
+            has_unit[name] = True
+        if "unit" not in lc or not row[lc["unit"]].strip():
+            has_unit[name] = False
+    found, pressure, seen = [], [], set()
+    for name in names:
+        var, _ = pipeline.identify_variable(name, md)
+        if var is None:
+            if name not in seen:
+                seen.add(name)
+                found.append((name, None, "UNKNOWN variable"))
+            continue
+        d = known.get(var) or {}
+        if d.get("quantity") == "pressure" and var not in pressure:
+            pressure.append(var)
+        if has_unit[name] or var in seen:
+            continue                           # unit given on every line, or already listed
+        seen.add(var)
+        found.append((var, d.get("unit", ""), f"{d.get('description', var)} - usual unit, check it "
+                                              "(some lines of the data have no unit)"))
+    return found, pressure
+
+
 def cmd_template(a):
     found = []
+    pressure = []                              # barometer variables: PTC/PGC lines to fill in
     if a.data:
         t = reader.read(a.data)
         cols, julian = reader.date_columns(t.headers)
         known = tables.variables()
         seen = set()
-        for i, hd in enumerate(t.headers):
+        if t.layout == "long":
+            found, pressure = _long_template_variables(t, known)
+        md = mdmod.Metadata()
+        for i, hd in enumerate(t.headers if t.layout == "wide" else []):
             if i in cols.values() or i == julian or not hd:
                 continue
-            h = parse_header(hd)
-            if h.var in seen:
+            text, unit_token = split_unit(hd)
+            n = " ".join(text.lower().split())
+            if n in pipeline.ID_COLUMNS or n.replace(" ", "_") in pipeline.ID_COLUMNS:
+                continue                       # identifier column: skipped by convert too
+            var, _ = pipeline.identify_variable(text, md)
+            if var is None:
+                if text not in seen:
+                    seen.add(text)
+                    found.append((text, None, "UNKNOWN variable"))
                 continue
-            seen.add(h.var)
-            if h.unit_token:
-                continue                       # unit already in the header
-            d = known.get(h.var)
-            found.append((h.var, d["unit"] if d else "", d["description"] if d else "UNKNOWN variable"))
+            d = known.get(var) or {}
+            if d.get("quantity") == "pressure" and var not in pressure:
+                pressure.append(var)
+            if unit_token or var in seen:
+                continue                       # unit already in the header, or already listed
+            seen.add(var)
+            found.append((var, d.get("unit", ""), d.get("description", var)))
     out = a.output or "metadata.csv"
     if os.path.exists(out) and not a.force:
         sys.exit(f"{out} exists; use --force to overwrite")
-    mdmod.write_template(out, found)
+    mdmod.write_template(out, found, pressure)
     print(f"Wrote {out}. Fill in the site details"
-          + (" and check the unit.<variable> lines." if found else "."))
+          + (", check the unit.<variable> lines" if any(u is not None for _, u, _ in found) else "")
+          + (", give a variable code to each alias. line" if any(u is None for _, u, _ in found) else "")
+          + (" and the barometer corrections (PTC/PGC = Y or N)" if pressure else "") + ".")
 
 
 def cmd_validate(a):
