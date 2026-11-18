@@ -294,7 +294,7 @@ def build_records(obs, md, log, opts):
 
 def options(md):
     return {
-        "trace_mm": float(md.get("trace_mm", 0.2)),
+        "trace_mm": float(md.get("trace_mm", 0.13)),
         "caves_temperature_c": md.get("caves_temperature_c", 12.8),
         "below_scale_c": md.get("below_scale_c", ""),
         "keep_wind_cloud_type": mdmod.truthy(md.get("keep_wind_cloud_type", "no")),
