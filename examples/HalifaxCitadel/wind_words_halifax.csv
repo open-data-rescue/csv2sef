@@ -1,0 +1,10 @@
+term,beaufort,language,note
+LB,2,en,light breeze
+mod,4,en,moderate breeze
+fresh,5,en,fresh breeze
+strong,6,en,strong breeze
+SB,6,en,strong breeze
+vstrong,7,en,very strong
+stormy,10,en,
+vstormy,11,en,
+s/o,unknown,en,no known meaning
