@@ -102,6 +102,7 @@ class TestCommandLine(unittest.TestCase):
             self.skipTest("csv2sef not installed (pip install -e .)")
         self.assertIn("Vicky Slonosky", authors)
         self.assertIn("Hervé Hacot", authors)
+        self.assertIn("Henry Balen", authors)
         self.assertNotIn("V, i, c", authors)
         self.assertNotIn("@", authors)
 
