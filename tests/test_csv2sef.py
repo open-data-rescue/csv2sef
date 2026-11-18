@@ -104,6 +104,15 @@ class TestConversions(unittest.TestCase):
         self.assertEqual(conv("clear", "dd", "dir")[0], "unmapped")          # wind: not a cloud
         self.assertEqual(conv("north-west", "hd", "dir")[2], 315)
         self.assertEqual(conv("calm", "dd", "dir")[2], "Calm")
+    def test_direction_and_force(self):
+        """Issue #6: direction and force in one cell ('south 1'), as in Red River 1844-45."""
+        self.assertEqual(conv("south 1", "w", "Sm")[:2], (None, 1))
+        self.assertEqual(conv("north-west 2", "w", "Sm")[1], 2)
+        self.assertEqual(conv("South-East 1/2", "w", "Sm")[1], 0)          # half a force: rounded down
+        self.assertEqual(conv("N 3", "w", "Bf")[1], 3)
+        self.assertEqual(conv("south 1", "dd", "dir")[2], 180)            # the direction part, as before
+        self.assertEqual(conv("fresh 1", "w", "Sm")[0], "invalid")        # not a direction: unchanged
+        self.assertEqual(conv("3", "w", "Sm")[1], 3)
 
     def test_flags(self):
         self.assertEqual(conv("M", "ta", "F")[0], "missing")

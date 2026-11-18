@@ -351,7 +351,20 @@ def _scale(v, ctx, log, top, name):
     return s, True
 
 
+def _force_part(v, ctx, log):
+    """'south 1' or 'north-west 1/2' (direction and force in one cell, as in some registers):
+    the force part. Other values are returned unchanged."""
+    m = re.fullmatch(r"\s*([A-Za-z][A-Za-z .-]*?)\s+(\d[\d\s/.,]*)\s*", v)
+    if m:
+        d = m.group(1).strip().lower().replace(".", "").replace(" by ", "by")
+        if d in ABBR_TO_DEG or d.replace(" ", "-") in ABBR_TO_DEG:
+            log.write(ctx, "NOTATION", f"'{v}': direction and force in one cell, force {m.group(2).strip()} used")
+            return m.group(2).strip()
+    return v
+
+
 def c_Sm(v, var, ctx, log, opts):
+    v = _force_part(v, ctx, log)
     if not re.search(r"\d", v):
         return c_words(v, var, ctx, log, opts)       # descriptive term in a numeric column
     s, ok = _scale(v, ctx, log, 10, "Smithsonian force")
@@ -361,6 +374,7 @@ def c_Sm(v, var, ctx, log, opts):
 
 
 def c_Bf(v, var, ctx, log, opts):
+    v = _force_part(v, ctx, log)
     if not re.search(r"\d", v):
         return c_words(v, var, ctx, log, opts)
     b, ok = _scale(v, ctx, log, 12, "Beaufort force")
