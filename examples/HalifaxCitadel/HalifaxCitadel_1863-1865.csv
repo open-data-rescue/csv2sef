@@ -1,4 +1,4 @@
-﻿Year,Month,Day,Day,ta 07:00 [F],p 07:00 [inHg],ta 15:00 [F],p 15:00 [inHg],tdb 07:00 [F],tb 07:00 [F],tdb 15:00 [F],tb 15:00 [F],Tn [F],w 12:00 [Beaufort text],dd 12:00 [direction],ww 12:00 [text],ww 00:00 [text],remarks [text]
+Year,Month,Day,Julian day,ta 07:00 [F],p 07:00 [inHg],ta 15:00 [F],p 15:00 [inHg],tdb 07:00 [F],tb 07:00 [F],tdb 15:00 [F],tb 15:00 [F],Tn [F],w 12:00 [Beaufort text],dd 12:00 [direction],ww 12:00 [text],ww 00:00 [text],remarks [text]
 1863,11,1,305,58.2,29.71,49.8,29.68,58.2,57.4,49.8,43.6,36,fresh,NNE,clear,Sun Shine,
 1863,11,2,306,37.4,29.74,41.2,29.9,37.4,35,41.2,36.6,35.4,strong,NE,?,,
 1863,11,3,307,46,29.9,49.6,29.68,46,42,49.6,48.8,37.?,fresh,SW,?,rain afternoon,
@@ -484,4 +484,4 @@
 1865,2,25,56,14,29.9,36,29.99,14,13,36,32.6,20,LB,NW,clear,,
 1865,2,26,57,23,29.99,32,29.7,23,22.8,32,32,38,fresh,SW,thick,rain & sleet,
 1865,2,27,58,38,29.54,44,29.6,38,38,44,44,41,LB,NW,thick,,
-1865,2,28,59,15,30,22,30.1,15,M,22,22,16,LB,NE,clear
+1865,2,28,59,15,30,22,30.1,15,M,22,22,16,LB,NE,clear,,

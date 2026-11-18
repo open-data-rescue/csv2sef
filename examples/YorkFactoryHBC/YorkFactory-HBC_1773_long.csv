@@ -1,4 +1,4 @@
-﻿ObservationDate,field_key,value,unit
+ObservationDate,field_key,value,unit
 1773-01-01 09:00:00,ta,-6,F
 1773-01-02 09:00:00,ta,-7,F
 1773-01-03 09:00:00,ta,-11,F
@@ -642,7 +642,7 @@
 1773-01-05 00:00:00,ww,clear.,mno
 1773-01-06 00:00:00,ww,cloudy forenoon. clear afternoon.,mno
 1773-01-07 00:00:00,ww,"cloudy day, a little snow about noon",mno
-1773-01-08 00:00:00,ww,thick fog in day. cloudy at evening. clear night. ,mno
+1773-01-08 00:00:00,ww,thick fog in day. cloudy at evening. clear night.,mno
 1773-01-09 00:00:00,ww,hazy forenoon. mostly clear afternoon and night.,mno
 1773-01-10 00:00:00,ww,thick rime. aurora borealis.,mno
 1773-01-11 00:00:00,ww,thick rime. aurora borealis.,mno
@@ -752,7 +752,7 @@
 1773-04-25 00:00:00,ww,clear. light clouds in afternoon.,mno
 1773-04-26 00:00:00,ww,"cloudy, snow in the night.",mno
 1773-04-27 00:00:00,ww,snow and drift.,mno
-1773-04-28 00:00:00,ww,snow and drift with high wind in forenoon. cloudy ,mno
+1773-04-28 00:00:00,ww,snow and drift with high wind in forenoon. cloudy,mno
 1773-04-29 00:00:00,ww,a little snow in morning. clear day.,mno
 1773-04-30 00:00:00,ww,snow through the day.,mno
 1773-05-01 00:00:00,ww,clear afternoon; rest cloudy,mno
@@ -796,7 +796,7 @@
 1773-06-08 00:00:00,ww,showers of snow and sleet in afternoon. rest cloud,mno
 1773-06-09 00:00:00,ww,cloudy,mno
 1773-06-10 00:00:00,ww,cloudy forenoon. high wind and flying clouds after,mno
-1773-06-11 00:00:00,ww,cloudy with high wind in afternoon. small rain in ,mno
+1773-06-11 00:00:00,ww,cloudy with high wind in afternoon. small rain in,mno
 1773-06-12 00:00:00,ww,cloudy forenoon. clear afternoon.,mno
 1773-06-13 00:00:00,ww,cloudy,mno
 1773-06-14 00:00:00,ww,cloudy with rain in forenoon. clear night.,mno
