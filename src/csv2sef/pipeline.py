@@ -14,6 +14,9 @@ from .checks import cross_checks, range_check
 from .convert import Context, Logger, process_value
 from .headers import normalise, parse_time, parse_when, split_time_suffix, split_unit
 
+# length units written on barometer / vapour-pressure columns: mercury (issue #9)
+MERCURY = {"mm": "mmHg", "in": "inHg"}
+
 # columns that identify the record rather than holding observations: ignored quietly
 ID_COLUMNS = {"observer", "observer id", "observer_id", "station", "station id", "station_id",
               "stationname", "station name", "timezone", "utcoffset", "utc offset", "utcdate",
@@ -104,6 +107,11 @@ def resolve_column(index, raw_header, md):
                 continue
             unit, source = u, src
             break
+    # a length unit on a barometer or vapour-pressure column means millimetres / inches of mercury
+    if unit in MERCURY and base.get("quantity") in ("pressure", "vapour"):
+        problems.append(f"unit '{unit}' read as {MERCURY[unit]} ({'millimetres' if unit == 'mm' else 'inches'} "
+                        f"of mercury) for {base.get('quantity')}; write [{MERCURY[unit]}] to avoid this note")
+        unit = MERCURY[unit]
     if unit is None:
         return None, "; ".join(problems) or f"no unit for '{var}'"
     # a weather column marked [text] is still a weather description to be coded
@@ -140,7 +148,10 @@ def unit_on(md, var, date, unit):
         f = dt.date.fromisoformat(ch["from"]) if ch["from"] else dt.date.min
         t = dt.date.fromisoformat(ch["to"]) if ch["to"] else dt.date.max
         if f <= date <= t:
-            return tables.canonical_unit(ch["unit"]) or ch["unit"]
+            u = tables.canonical_unit(ch["unit"]) or ch["unit"]
+            if u in MERCURY and tables.variables().get(var, {}).get("quantity") in ("pressure", "vapour"):
+                u = MERCURY[u]
+            return u
     return unit
 
 

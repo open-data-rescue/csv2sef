@@ -277,6 +277,25 @@ class TestOtherInputs(unittest.TestCase):
         with self.assertRaises(SystemExit) as e:
             pipeline.run(bad, self.meta, check_only=True)
         self.assertIn("Columns read: 'Datum'", str(e.exception))
+    def test_mm_on_pressure(self):
+        """Issue #9: [mm] / [in] on a barometer column = millimetres / inches of mercury."""
+        md = mdmod.Metadata()
+        c, _ = pipeline.resolve_column(0, "p 08:00 [mm]", md)
+        self.assertEqual(c.unit, "mmHg")
+        self.assertTrue(any("read as mmHg" in p for p in c.problems))
+        c, _ = pipeline.resolve_column(0, "p 08:00 [in]", md)
+        self.assertEqual(c.unit, "inHg")
+        c, _ = pipeline.resolve_column(0, "p 08:00 [mmHg]", md)
+        self.assertEqual((c.unit, c.problems), ("mmHg", []))                  # no note when written right
+        c, _ = pipeline.resolve_column(0, "rr [mm]", md)
+        self.assertEqual(c.unit, "mm")                                       # rain: still millimetres
+        data = os.path.join(self.d, "mm.csv")
+        with open(data, "w", newline="") as f:
+            csv.writer(f).writerows([["year", "month", "day", "p 08:00 [mm]"], [1883, 9, 1, 761.3]])
+        out = os.path.join(self.d, "o6")
+        pipeline.run(data, self.meta, outdir=out)
+        p = sef_rows(glob.glob(os.path.join(out, "SEF", "*_p.tsv"))[0])
+        self.assertEqual(p[0][6], "1014.98")                                 # hPa, not 761.3
 
     def test_template(self):
         p = os.path.join(self.d, "t.csv")
