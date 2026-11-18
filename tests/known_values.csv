@@ -137,3 +137,10 @@ id,category,var,unit,input,expected,expected_flag,tolerance,opts,source,note,sta
 136,cloud,n,tenths,8,6,,0,,tenths x 0.8 rounded to whole oktas,Victoria 2026-11-18,formula
 137,cloud,n,tenths,9,7,,0,,tenths x 0.8 rounded to whole oktas,Victoria 2026-11-18,formula
 138,precipitation,rr,in,trace,0.13,trace,0,,"0.005 in = 0.13 mm (Table 8, Slonosky et al. 2026); default when trace_mm is not set",,formula
+139,direction,hd,dir,-999,NA,missing,,,missing-value code (issue #7),,formula
+140,direction,hd,dir,hidden,NA,hidden,,,clouds hidden by fog or thick lower clouds (Table 5); issue #7,,formula
+141,direction,cd,dir,clear,Calm,no clouds,,,"no clouds: same value as 'none', flagged (Victoria 2026-11-18); issue #7",,formula
+142,cloud,hd,dir,none,Calm,no clouds,,,none in a cloud column = no clouds (Victoria 2026-11-18),,formula
+143,cloud,cl,lct,none,Cl0,,,,Table 5: None; Clear = Cl0,,formula
+144,direction,dd,dir,none,NA,missing,,,none in other columns = missing (Table 7),,formula
+145,cloud,n,tenths,none,0,,0,,none in a cloud-amount column = no clouds = 0 (Victoria 2026-11-18),,formula

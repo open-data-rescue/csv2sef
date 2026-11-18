@@ -56,7 +56,9 @@ class Logger:
 # Missing / invalid values (Table 7)
 # --------------------------------------------------------------------------
 MISSING_EXACT = {"", "-", "--", "m", "na", "n/a", "nan", "missing", "none"}
-MISSING_TERMS = ["not.taken", "not taken", "unknown symbol", "retracted", "-999",
+# cloud type, direction and amount: "none" means no clouds (Table 5), not missing
+CLOUD_TYPE_DIR_VARS = {"c", "cl", "ch", "cd", "hd", "n", "nl", "nh", "hl"}
+MISSING_TERMS = ["not.taken", "not taken", "unknown symbol", "retracted", "redacted", "-999",
                  "no grass", "no place", "suspended", "abt on duty"]
 INSTRUMENT_ERROR_TERMS = ["out of order", "out.of.order", "broken", "unserviceable", "-888",
                           "incorrect", "not reliable", "covered in snow", "covered with snow",
@@ -78,7 +80,7 @@ def pre_screen(value, var, unit, ctx, log):
         if unit in EMPTY_TOKEN_VALUE and var != "eee":
             return "ok", EMPTY_TOKEN_VALUE[unit], "no entry"
         return "stop", None, "missing"
-    if vl in MISSING_EXACT:
+    if vl in MISSING_EXACT and not (vl == "none" and var in CLOUD_TYPE_DIR_VARS):
         return "stop", None, "missing"
     if unit == "text":
         return "ok", v, None                      # free text is kept verbatim
@@ -341,30 +343,50 @@ def c_percent(v, var, ctx, log, opts):
 
 
 def _scale(v, ctx, log, top, name):
+    """Scale value -> (whole force, in range?, flag). Fractions ('1/2', '1 1/2') are rounded down."""
     from fractions import Fraction as Fr
-    s = int(float(sum(Fr(x) for x in v.replace(",", " ").split())))
+    total = sum(Fr(x) for x in v.replace(",", " ").split())
+    s = int(total)
+    flag = None
+    if total != s:
+        flag = "fraction rounded down"
+        log.write(ctx, "NOTATION", f"{name} '{v}': no fractions on this scale, rounded down to {s}")
     if s < 0 or s > top:
         log.write(ctx, "RANGE", f"{name} {s}: out of range")
-        return s, False
-    return s, True
+        return s, False, flag
+    return s, True, flag
+
+
+def _force_part(v, ctx, log):
+    """'south 1' or 'north-west 1/2' (direction and force in one cell, as in some registers):
+    the force part. Other values are returned unchanged."""
+    m = re.fullmatch(r"\s*([A-Za-z][A-Za-z .-]*?)\s+(\d[\d\s/.,]*)\s*", v)
+    if m:
+        d = m.group(1).strip().lower().replace(".", "").replace(" by ", "by")
+        if d in ABBR_TO_DEG or d.replace(" ", "-") in ABBR_TO_DEG:
+            log.write(ctx, "NOTATION", f"'{v}': direction and force in one cell, force {m.group(2).strip()} used")
+            return m.group(2).strip()
+    return v
 
 
 def c_Sm(v, var, ctx, log, opts):
+    v = _force_part(v, ctx, log)
     if not re.search(r"\d", v):
         return c_words(v, var, ctx, log, opts)       # descriptive term in a numeric column
-    s, ok = _scale(v, ctx, log, 10, "Smithsonian force")
+    s, ok, flag = _scale(v, ctx, log, 10, "Smithsonian force")
     if not ok:
         return "out of range", s, None
-    return None, s, _r(im.convertSmithsonian(s), 1)       # Table 4: nominal mph -> m/s
+    return flag, s, _r(im.convertSmithsonian(s), 1)       # Table 4: nominal mph -> m/s
 
 
 def c_Bf(v, var, ctx, log, opts):
+    v = _force_part(v, ctx, log)
     if not re.search(r"\d", v):
         return c_words(v, var, ctx, log, opts)
-    b, ok = _scale(v, ctx, log, 12, "Beaufort force")
+    b, ok, flag = _scale(v, ctx, log, 12, "Beaufort force")
     if not ok:
         return "out of range", b, None
-    return None, b, _r(im.convertBeaufort(b), 1)
+    return flag, b, _r(im.convertBeaufort(b), 1)
 
 
 def c_words(v, var, ctx, log, opts):
@@ -428,7 +450,7 @@ def c_tenths(v, var, ctx, log, opts):
     vl = v.lower()
     if any(x in vl for x in OBSCURED):
         return None, v, 9
-    if "clear" in vl or vl == "zero":
+    if "clear" in vl or vl in ("zero", "none"):
         return None, 0, 0
     t = clean_number(v, ctx, log)
     if t < 0 or t > 10:
@@ -439,6 +461,8 @@ def c_tenths(v, var, ctx, log, opts):
 
 def c_okta(v, var, ctx, log, opts):
     vl = v.lower()
+    if vl.strip() in ("none", "clear"):
+        return None, 0, 0
     if any(x in vl for x in OBSCURED):
         return None, v, 9
     t = clean_number(v, ctx, log)
@@ -481,8 +505,22 @@ ABBR_TO_DEG.update({"northeast": 45, "northwest": 315, "southeast": 135, "southw
                     "nno": 337.5, "sso": 202.5})
 
 
+# Table 5: "hidden" - fog or thick lower clouds hide the higher clouds, so their direction can't be seen
+HIDDEN_WORDS = {"hidden", "obscured", "haze", "hazy", "fog", "foggy", "smoke", "mist"}
+NO_CLOUD_WORDS = {"clear", "none", "no clouds", "cloudless"}
+
+
 def c_dir(v, var, ctx, log, opts):
-    vl = v.strip().lower().replace(".", "").replace(" by ", "by")
+    raw = v.strip().lower()
+    if raw in ("-999", "-999.0", "-999.9", "-9999"):
+        return "missing", v, None                       # missing-value code in a direction column
+    if raw in ("-888", "-888.0", "-888.8"):
+        return "instrument error", v, None
+    vl = raw.replace(".", "").replace(" by ", "by")
+    if vl in HIDDEN_WORDS:
+        return "hidden", v, None                        # clouds hidden: direction can't be seen
+    if vl in NO_CLOUD_WORDS and var != "dd":
+        return "no clouds", v, "Calm"                   # no clouds: Calm, flagged
     if vl in ("calm", "c", "0", "none", "not perceptible", "imp", "calme"):
         return None, v, "Calm"
     if vl.startswith("var"):
@@ -502,6 +540,8 @@ def c_dir(v, var, ctx, log, opts):
 
 
 def _cloudtype(v, var, ctx, log, opts, upper):
+    if v.strip().lower() in NO_CLOUD_WORDS:
+        return None, v, "Ch0" if upper else "Cl0"       # Table 5: None; Clear = 0
     if opts.get("keep_wind_cloud_type"):
         code = im.abbr_cloud.get(v.lower(), "-999")
     else:

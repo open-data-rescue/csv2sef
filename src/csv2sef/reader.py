@@ -68,6 +68,19 @@ def unquote(v):
     return v
 
 
+def guess_delimiter(text):
+    """Comma, semicolon or tab, judged from the first lines of the file (the header and up to
+    five data lines), so that a header typed with tabs after its commas doesn't decide alone."""
+    lines = [ln for ln in text.splitlines() if ln.strip()][:6]
+    if not lines:
+        return ","
+    data = lines[1:] or lines
+    def count(d, ls):
+        return sum(ln.count(d) for ln in ls)
+    best = max((",", ";", "\t"), key=lambda d: (count(d, data), count(d, lines[:1]), d == ","))
+    return best if count(best, data) or count(best, lines[:1]) else ","
+
+
 def read(path, sheet=None):
     ext = os.path.splitext(path)[1].lower()
     if ext in (".xlsx", ".xlsm"):
@@ -87,13 +100,7 @@ def read(path, sheet=None):
                 break
             except UnicodeDecodeError:
                 continue
-        delim = "\t" if ext in (".tsv", ".tab") else ","
-        if ext not in (".tsv", ".tab"):
-            first = text.splitlines()[0] if text else ""
-            if first.count(";") > first.count(","):
-                delim = ";"
-            elif first.count("\t") > first.count(","):
-                delim = "\t"
+        delim = "\t" if ext in (".tsv", ".tab") else guess_delimiter(text)
         raw = list(csv.reader(text.splitlines(), delimiter=delim))
     # drop leading empty lines
     while raw and not any(c.strip() for c in raw[0]):

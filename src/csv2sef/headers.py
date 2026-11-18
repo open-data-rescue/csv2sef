@@ -61,6 +61,24 @@ def parse_time(tok):
     return h, mi
 
 
+def split_time_suffix(name):
+    """Field name ending in an observation time -> (name without it, (hour, minute), token).
+
+    'attached_thermometer_7am' -> ('attached_thermometer', (7, 0), '7am'). Only clock times
+    with am/pm or a colon, and named times (sunrise, noon ...), count: bare numbers such as
+    'casual_phenomena_line_2', 'barometer_observed_117' or '..._9pm_1' are left alone.
+    Returns (name, None, None) when the name has no such ending.
+    """
+    m = re.match(r"^(.*?)[ _]+([^ _]+)$", (name or "").strip())
+    if not m or not m.group(1):
+        return name, None, None
+    tok = m.group(2).lower().replace(".", "")
+    if (tok in NAMED_TIMES or re.fullmatch(r"\d{1,2}(:\d{2})?(am|pm)", tok)
+            or re.fullmatch(r"\d{1,2}:\d{2}", tok)):
+        return m.group(1), parse_time(tok), m.group(2)
+    return name, None, None
+
+
 def parse_when(rest):
     """Text after the variable -> (time, label, problem).
     time None and label None = daily value; label = approximate time word."""

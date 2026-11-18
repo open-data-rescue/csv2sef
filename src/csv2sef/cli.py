@@ -10,6 +10,7 @@ Command line interface.
 """
 import argparse
 import importlib.metadata
+from email.utils import getaddresses
 import os
 import sys
 
@@ -128,13 +129,30 @@ def cmd_variables(a):
         print(f"  {u:13} {desc}")
 
 
+def _version():
+    try:
+        return importlib.metadata.version(__package__)
+    except importlib.metadata.PackageNotFoundError:          # run from the source folder, not installed
+        return "(not installed)"
+
+
+def _authors():
+    """Author names from the package metadata: 'Vicky Slonosky, Hervé Hacot'."""
+    try:
+        raw = importlib.metadata.metadata(__package__).get("Author-email") or ""
+    except importlib.metadata.PackageNotFoundError:
+        return ""
+    names = [name or addr for name, addr in getaddresses([raw]) if name or addr]
+    return ", ".join(names)
+
+
 def main(argv=None):
     p = argparse.ArgumentParser(
         prog="csv2sef",
-        description=f"csv2sef {importlib.metadata.metadata(__package__)['Version']}: historical weather csv/Excel -> SEF 1.0.0. "
-                    f"Authors: {', '.join(importlib.metadata.metadata(__package__)['Author-email'])}.",
+        description=f"csv2sef {_version()}: historical weather csv/Excel -> SEF 1.0.0. "
+                    f"Authors: {_authors()}.",
         epilog="Please cite: " + CITATION)
-    p.add_argument("--version", action="version", version=f"csv2sef {importlib.metadata.metadata(__package__)['Version']}")
+    p.add_argument("--version", action="version", version=f"csv2sef {_version()}")
     sub = p.add_subparsers(dest="cmd")
 
     for name, fn, hlp in (("check", cmd_check, "dry run: show how each column will be read"),

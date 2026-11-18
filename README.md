@@ -2,7 +2,7 @@
 csv2sef - convert transcribed historical weather observations (csv / Excel)
 into the Station Exchange Format (SEF 1.0.0).
 
-Authors: Hervé Hacot, Victoria Slonosky (Open Data Rescue)
+Authors: Hervé Hacot, Victoria Slonosky, Henry Balen (Open Data Rescue)
 
 Please cite:
     Slonosky, V., Black, R., Podolsky, L., Wang, X. & Cheng, V. (2026).

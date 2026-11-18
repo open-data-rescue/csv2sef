@@ -12,7 +12,10 @@ from . import metadata as mdmod
 from . import reader, sef, tables
 from .checks import cross_checks, range_check
 from .convert import Context, Logger, process_value
-from .headers import normalise, parse_time, parse_when, split_unit
+from .headers import normalise, parse_time, parse_when, split_time_suffix, split_unit
+
+# length units written on barometer / vapour-pressure columns: mercury (issue #9)
+MERCURY = {"mm": "mmHg", "in": "inHg"}
 
 # columns that identify the record rather than holding observations: ignored quietly
 ID_COLUMNS = {"observer", "observer id", "observer_id", "station", "station id", "station_id",
@@ -104,6 +107,11 @@ def resolve_column(index, raw_header, md):
                 continue
             unit, source = u, src
             break
+    # a length unit on a barometer or vapour-pressure column means millimetres / inches of mercury
+    if unit in MERCURY and base.get("quantity") in ("pressure", "vapour"):
+        problems.append(f"unit '{unit}' read as {MERCURY[unit]} ({'millimetres' if unit == 'mm' else 'inches'} "
+                        f"of mercury) for {base.get('quantity')}; write [{MERCURY[unit]}] to avoid this note")
+        unit = MERCURY[unit]
     if unit is None:
         return None, "; ".join(problems) or f"no unit for '{var}'"
     # a weather column marked [text] is still a weather description to be coded
@@ -140,7 +148,10 @@ def unit_on(md, var, date, unit):
         f = dt.date.fromisoformat(ch["from"]) if ch["from"] else dt.date.min
         t = dt.date.fromisoformat(ch["to"]) if ch["to"] else dt.date.max
         if f <= date <= t:
-            return tables.canonical_unit(ch["unit"]) or ch["unit"]
+            u = tables.canonical_unit(ch["unit"]) or ch["unit"]
+            if u in MERCURY and tables.variables().get(var, {}).get("quantity") in ("pressure", "vapour"):
+                u = MERCURY[u]
+            return u
     return unit
 
 
@@ -154,7 +165,11 @@ def observations(table, md, log):
     cols, julian = reader.date_columns(table.headers)
     issues, columns, skipped, ignored = [], [], [], []
     if not ("date" in cols or {"year", "month", "day"} <= set(cols)):
-        raise SystemExit("ERROR: no date columns found (need Year, Month, Day or Date)")
+        found = ", ".join(repr(h) for h in table.headers[:8] if h) or "(none)"
+        raise SystemExit("ERROR: no date columns found (need Year, Month, Day or Date).\n"
+                         f"Columns read: {found}.\n"
+                         "If these look wrong, check the separators in the first line of the file "
+                         "(commas, tabs or semicolons, the same as in the data lines).")
 
     def is_ignored(h):
         n = normalise(h).lower()
@@ -213,12 +228,23 @@ def observations(table, md, log):
                     ignored.append(hd)
                 continue
             t = row[lc["time"]].strip() if "time" in lc else (dtime or "")
-            if t and not (midnight_daily and t in ("00:00", "0:00", "00:00:00")):
-                hd += " " + t
-            if "unit" in lc and row[lc["unit"]].strip():
-                hd += f" [{row[lc['unit']].strip()}]"
+            use_t = bool(t) and not (midnight_daily and t in ("00:00", "0:00", "00:00:00"))
+            unit_txt = row[lc["unit"]].strip() if "unit" in lc else ""
+            name = hd
+            hd = name + (" " + t if use_t else "") + (f" [{unit_txt}]" if unit_txt else "")
             if hd not in cache:
                 c, err = resolve_column(-1, hd, md)
+                # field name that already ends in the hour ('attached_thermometer_7am') plus the
+                # time column ('07:00'): read the name without its hour, and use the time column
+                if c and use_t and any("could not read time" in p for p in c.problems):
+                    base, ftime, tok = split_time_suffix(name)
+                    if ftime is not None:
+                        c2, _ = resolve_column(-1, base + " " + t + (f" [{unit_txt}]" if unit_txt else ""), md)
+                        if c2 and not any("could not read time" in p for p in c2.problems):
+                            if parse_time(t) not in (None, ftime):
+                                c2.problems.append(f"field name {name} says {tok}, time column says {t}: "
+                                                   f"time column used")
+                            c = c2
                 cache[hd] = c
                 if c:
                     columns.append(c)
@@ -470,6 +496,15 @@ def make_report(data_path, table, md, columns, skipped, ignored, issues, records
                  f"{iu[:8]:8} {c.stat:8} {nval:6d} {nflag:7d}")
         for p in c.problems:
             L.append(f"    ! {p}")
+        for ch in md.unit_changes:                     # unit_change lines that apply to this column
+            if ch["var"] != c.var:
+                continue
+            f = dt.date.fromisoformat(ch["from"]) if ch["from"] else dt.date.min
+            u = unit_on(md, c.var, f, c.unit)
+            t = dt.date.fromisoformat(ch["to"]) if ch["to"] else dt.date.max
+            n = sum(1 for r in rs if f <= r["date"] <= t and r["iso_value"] is not None)
+            L.append(f"    > unit {u} from {ch['from'] or 'the start'} to {ch['to'] or 'the end'} "
+                     f"(unit_change): {n} value(s)")
     for hd, err in skipped:
         L.append(f"{hd[:28]:28} SKIPPED: {err}")
     if ignored:

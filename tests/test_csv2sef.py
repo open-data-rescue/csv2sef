@@ -86,11 +86,55 @@ class TestConversions(unittest.TestCase):
         self.assertEqual(conv("3", "fs", "in")[3], "cm")
         self.assertEqual(conv("point de vent", "w", "Sm")[2], 0.0)
 
+    def test_direction_values(self):
+        """Issue #7: missing codes, hidden and clear in direction columns."""
+        self.assertEqual(conv("-999", "hd", "dir")[:3], ("missing", "-999", None))
+        self.assertEqual(conv("-888", "dd", "dir")[0], "instrument error")
+        self.assertEqual(conv("hidden", "hd", "dir")[:3], ("hidden", "hidden", None))
+        self.assertEqual(conv("Haze", "hd", "dir")[0], "hidden")
+        self.assertEqual(conv("clear", "cd", "dir")[:3], ("no clouds", "clear", "Calm"))
+        self.assertEqual(conv("none", "hd", "dir")[:3], ("no clouds", "none", "Calm"))     # cloud columns
+        self.assertEqual(conv("none", "cl", "lct")[2], "Cl0")
+        self.assertEqual(conv("None", "ch", "uct")[2], "Ch0")
+        self.assertEqual(conv("none", "dd", "dir")[0], "missing")                          # other columns
+        self.assertEqual(conv("none", "ta", "F")[0], "missing")
+        self.assertEqual(conv("none", "n", "tenths")[:3], (None, 0, 0))                  # cloud amount
+        self.assertEqual(conv("None", "nh", "okta")[2], 0)
+        self.assertEqual(conv("none", "skc", "tenths_clear")[0], "missing")              # clearness: not 0
+        self.assertEqual(conv("clear", "dd", "dir")[0], "unmapped")          # wind: not a cloud
+        self.assertEqual(conv("north-west", "hd", "dir")[2], 315)
+        self.assertEqual(conv("calm", "dd", "dir")[2], "Calm")
+    def test_direction_and_force(self):
+        """Issue #6: direction and force in one cell ('south 1'), as in Red River 1844-45."""
+        self.assertEqual(conv("south 1", "w", "Sm")[:2], (None, 1))
+        self.assertEqual(conv("north-west 2", "w", "Sm")[1], 2)
+        self.assertEqual(conv("South-East 1/2", "w", "Sm")[:2], ("fraction rounded down", 0))
+        self.assertEqual(conv("2 1/2", "w", "Bf")[:2], ("fraction rounded down", 2))
+        self.assertEqual(conv("redacted", "cv", "cloudvel")[0], "missing")
+        self.assertEqual(conv("N 3", "w", "Bf")[1], 3)
+        self.assertEqual(conv("south 1", "dd", "dir")[2], 180)            # the direction part, as before
+        self.assertEqual(conv("fresh 1", "w", "Sm")[0], "invalid")        # not a direction: unchanged
+        self.assertEqual(conv("3", "w", "Sm")[1], 3)
+
     def test_flags(self):
         self.assertEqual(conv("M", "ta", "F")[0], "missing")
         self.assertEqual(conv("37.?", "ta", "F")[:3], ("uncertain", 37.0, 2.78))
         self.assertEqual(conv("*", "ta", "F")[0], "instrument error")
         self.assertEqual(conv("[45]", "ta", "F")[1], 45.0)
+
+
+class TestCommandLine(unittest.TestCase):
+    def test_help_authors(self):
+        """Issue #5: --help lists author names, not the letters of one string."""
+        from csv2sef import cli
+        authors = cli._authors()
+        if not authors:
+            self.skipTest("csv2sef not installed (pip install -e .)")
+        self.assertIn("Vicky Slonosky", authors)
+        self.assertIn("Hervé Hacot", authors)
+        self.assertIn("Henry Balen", authors)
+        self.assertNotIn("V, i, c", authors)
+        self.assertNotIn("@", authors)
 
 
 class TestHalifax(unittest.TestCase):
@@ -190,6 +234,82 @@ class TestOtherInputs(unittest.TestCase):
         self.assertEqual(ww[0][3:7], ["0", "0", "day", "SN"])
         ta = sef_rows(glob.glob(os.path.join(out, "SEF", "*_ta.tsv"))[0])
         self.assertEqual(ta[0][3:7], ["13", "0", "0", "25.3"])
+
+    def test_hour_in_field_name(self):
+        """Issue #4: database field names that already end in the hour ('..._7am') plus a time
+        column: fixed-hour readings keep their hour (not read as daily values)."""
+        from csv2sef.headers import split_time_suffix
+        self.assertEqual(split_time_suffix("attached_thermometer_7am"), ("attached_thermometer", (7, 0), "7am"))
+        self.assertEqual(split_time_suffix("clearness_sky_sunrise")[1], (6, 0))
+        for name in ("casual_phenomena_line_2", "barometer_observed_117", "attached_thermometer_9pm_1",
+                     "open_air_thermometer_mean"):
+            self.assertEqual(split_time_suffix(name), (name, None, None))           # bare numbers: not times
+        data = os.path.join(self.d, "hour.csv")
+        with open(data, "w", newline="") as f:
+            csv.writer(f).writerows([
+                ["StationName", "ObservationDate", "value", "unit", "field_key"],
+                ["X", "1876-01-01 07:00:00", "-30", "F", "air_temperature_7am"],
+                ["X", "1876-01-01 14:00:00", "-14.5", "F", "air_temperature_2pm"],
+                ["X", "1876-01-01 20:00:00", "-8", "F", "air_temperature_9pm"]])     # name and time disagree
+        out = os.path.join(self.d, "o5")
+        rep = pipeline.run(data, self.meta, outdir=out)
+        self.assertIn("all files valid", rep)
+        self.assertNotIn("could not read time", rep)
+        self.assertIn("says 9pm, time column says 20:00: time column used", rep)
+        ta = sef_rows(glob.glob(os.path.join(out, "SEF", "*_ta.tsv"))[0])
+        self.assertEqual([r[3:6] for r in ta], [["12", "0", "0"], ["19", "0", "0"], ["1", "0", "0"]])  # UTC-5
+    def test_separators(self):
+        """Issue #8: a header typed with tabs after its commas; semicolons; tabs."""
+        from csv2sef import reader
+        for name, text in (("tabhead.csv", 'Date,\tta 08:00 [F],\tdd 08:00 [dir]\t\n1773-01-01,"-6","West",\n'),
+                           ("semi.csv", "year;month;day;ta 08:00 [F]\n1773;1;1;-6\n"),
+                           ("tabs.csv", "year\tmonth\tday\tta 08:00 [F]\n1773\t1\t1\t-6\n")):
+            p = os.path.join(self.d, name)
+            with open(p, "w", encoding="utf-8") as f:
+                f.write(text)
+            t = reader.read(p)
+            self.assertIn("ta 08:00 [F]", t.headers, name)
+            cols, _ = reader.date_columns(t.headers)
+            self.assertTrue("date" in cols or "year" in cols, name)
+        bad = os.path.join(self.d, "nodate.csv")
+        with open(bad, "w", encoding="utf-8") as f:
+            f.write("Datum,ta 08:00 [F]\n1773-01-01,-6\n")
+        with self.assertRaises(SystemExit) as e:
+            pipeline.run(bad, self.meta, check_only=True)
+        self.assertIn("Columns read: 'Datum'", str(e.exception))
+    def test_mm_on_pressure(self):
+        """Issue #9: [mm] / [in] on a barometer column = millimetres / inches of mercury."""
+        md = mdmod.Metadata()
+        c, _ = pipeline.resolve_column(0, "p 08:00 [mm]", md)
+        self.assertEqual(c.unit, "mmHg")
+        self.assertTrue(any("read as mmHg" in p for p in c.problems))
+        c, _ = pipeline.resolve_column(0, "p 08:00 [in]", md)
+        self.assertEqual(c.unit, "inHg")
+        c, _ = pipeline.resolve_column(0, "p 08:00 [mmHg]", md)
+        self.assertEqual((c.unit, c.problems), ("mmHg", []))                  # no note when written right
+        c, _ = pipeline.resolve_column(0, "rr [mm]", md)
+        self.assertEqual(c.unit, "mm")                                       # rain: still millimetres
+        data = os.path.join(self.d, "mm.csv")
+        with open(data, "w", newline="") as f:
+            csv.writer(f).writerows([["year", "month", "day", "p 08:00 [mm]"], [1883, 9, 1, 761.3]])
+        out = os.path.join(self.d, "o6")
+        pipeline.run(data, self.meta, outdir=out)
+        p = sef_rows(glob.glob(os.path.join(out, "SEF", "*_p.tsv"))[0])
+        self.assertEqual(p[0][6], "1014.98")                                 # hPa, not 761.3
+    def test_unit_change_in_check(self):
+        """Issue #10: check lists the units set by unit_change."""
+        data = os.path.join(self.d, "uc.csv")
+        with open(data, "w", newline="") as f:
+            csv.writer(f).writerows([["year", "month", "day", "ta 08:00 [F]"],
+                                     [1850, 1, 1, 32], [1851, 6, 1, 10], [1853, 1, 1, 50]])
+        with open(self.meta, "a", newline="") as f:
+            csv.writer(f).writerow(["unit_change", "ta; R; 1850-06-01; 1852-12-31"])
+        rep = pipeline.run(data, self.meta, check_only=True)
+        self.assertIn("> unit R from 1850-06-01 to 1852-12-31 (unit_change): 1 value(s)", rep)
+        out = os.path.join(self.d, "o7")
+        pipeline.run(data, self.meta, outdir=out)
+        ta = sef_rows(glob.glob(os.path.join(out, "SEF", "*_ta.tsv"))[0])
+        self.assertEqual([r[6] for r in ta], ["0", "12.5", "10"])             # F, R (10 R), F
 
     def test_template(self):
         p = os.path.join(self.d, "t.csv")
