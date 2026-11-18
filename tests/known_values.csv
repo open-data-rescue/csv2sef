@@ -143,3 +143,4 @@ id,category,var,unit,input,expected,expected_flag,tolerance,opts,source,note,sta
 142,cloud,hd,dir,none,Calm,no clouds,,,none in a cloud column = no clouds (Victoria 2026-11-18),,formula
 143,cloud,cl,lct,none,Cl0,,,,Table 5: None; Clear = Cl0,,formula
 144,direction,dd,dir,none,NA,missing,,,none in other columns = missing (Table 7),,formula
+145,cloud,n,tenths,none,0,,0,,none in a cloud-amount column = no clouds = 0 (Victoria 2026-11-18),,formula

@@ -98,6 +98,9 @@ class TestConversions(unittest.TestCase):
         self.assertEqual(conv("None", "ch", "uct")[2], "Ch0")
         self.assertEqual(conv("none", "dd", "dir")[0], "missing")                          # other columns
         self.assertEqual(conv("none", "ta", "F")[0], "missing")
+        self.assertEqual(conv("none", "n", "tenths")[:3], (None, 0, 0))                  # cloud amount
+        self.assertEqual(conv("None", "nh", "okta")[2], 0)
+        self.assertEqual(conv("none", "skc", "tenths_clear")[0], "missing")              # clearness: not 0
         self.assertEqual(conv("clear", "dd", "dir")[0], "unmapped")          # wind: not a cloud
         self.assertEqual(conv("north-west", "hd", "dir")[2], 315)
         self.assertEqual(conv("calm", "dd", "dir")[2], "Calm")

@@ -56,8 +56,8 @@ class Logger:
 # Missing / invalid values (Table 7)
 # --------------------------------------------------------------------------
 MISSING_EXACT = {"", "-", "--", "m", "na", "n/a", "nan", "missing", "none"}
-# cloud type and cloud direction: "none" means no clouds (Table 5), not missing
-CLOUD_TYPE_DIR_VARS = {"c", "cl", "ch", "cd", "hd"}
+# cloud type, direction and amount: "none" means no clouds (Table 5), not missing
+CLOUD_TYPE_DIR_VARS = {"c", "cl", "ch", "cd", "hd", "n", "nl", "nh", "hl"}
 MISSING_TERMS = ["not.taken", "not taken", "unknown symbol", "retracted", "-999",
                  "no grass", "no place", "suspended", "abt on duty"]
 INSTRUMENT_ERROR_TERMS = ["out of order", "out.of.order", "broken", "unserviceable", "-888",
@@ -430,7 +430,7 @@ def c_tenths(v, var, ctx, log, opts):
     vl = v.lower()
     if any(x in vl for x in OBSCURED):
         return None, v, 9
-    if "clear" in vl or vl == "zero":
+    if "clear" in vl or vl in ("zero", "none"):
         return None, 0, 0
     t = clean_number(v, ctx, log)
     if t < 0 or t > 10:
@@ -441,6 +441,8 @@ def c_tenths(v, var, ctx, log, opts):
 
 def c_okta(v, var, ctx, log, opts):
     vl = v.lower()
+    if vl.strip() in ("none", "clear"):
+        return None, 0, 0
     if any(x in vl for x in OBSCURED):
         return None, v, 9
     t = clean_number(v, ctx, log)
