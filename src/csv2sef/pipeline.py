@@ -154,7 +154,11 @@ def observations(table, md, log):
     cols, julian = reader.date_columns(table.headers)
     issues, columns, skipped, ignored = [], [], [], []
     if not ("date" in cols or {"year", "month", "day"} <= set(cols)):
-        raise SystemExit("ERROR: no date columns found (need Year, Month, Day or Date)")
+        found = ", ".join(repr(h) for h in table.headers[:8] if h) or "(none)"
+        raise SystemExit("ERROR: no date columns found (need Year, Month, Day or Date).\n"
+                         f"Columns read: {found}.\n"
+                         "If these look wrong, check the separators in the first line of the file "
+                         "(commas, tabs or semicolons, the same as in the data lines).")
 
     def is_ignored(h):
         n = normalise(h).lower()

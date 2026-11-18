@@ -258,6 +258,25 @@ class TestOtherInputs(unittest.TestCase):
         self.assertIn("says 9pm, time column says 20:00: time column used", rep)
         ta = sef_rows(glob.glob(os.path.join(out, "SEF", "*_ta.tsv"))[0])
         self.assertEqual([r[3:6] for r in ta], [["12", "0", "0"], ["19", "0", "0"], ["1", "0", "0"]])  # UTC-5
+    def test_separators(self):
+        """Issue #8: a header typed with tabs after its commas; semicolons; tabs."""
+        from csv2sef import reader
+        for name, text in (("tabhead.csv", 'Date,\tta 08:00 [F],\tdd 08:00 [dir]\t\n1773-01-01,"-6","West",\n'),
+                           ("semi.csv", "year;month;day;ta 08:00 [F]\n1773;1;1;-6\n"),
+                           ("tabs.csv", "year\tmonth\tday\tta 08:00 [F]\n1773\t1\t1\t-6\n")):
+            p = os.path.join(self.d, name)
+            with open(p, "w", encoding="utf-8") as f:
+                f.write(text)
+            t = reader.read(p)
+            self.assertIn("ta 08:00 [F]", t.headers, name)
+            cols, _ = reader.date_columns(t.headers)
+            self.assertTrue("date" in cols or "year" in cols, name)
+        bad = os.path.join(self.d, "nodate.csv")
+        with open(bad, "w", encoding="utf-8") as f:
+            f.write("Datum,ta 08:00 [F]\n1773-01-01,-6\n")
+        with self.assertRaises(SystemExit) as e:
+            pipeline.run(bad, self.meta, check_only=True)
+        self.assertIn("Columns read: 'Datum'", str(e.exception))
 
     def test_template(self):
         p = os.path.join(self.d, "t.csv")
