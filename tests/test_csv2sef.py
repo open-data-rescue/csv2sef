@@ -93,6 +93,19 @@ class TestConversions(unittest.TestCase):
         self.assertEqual(conv("[45]", "ta", "F")[1], 45.0)
 
 
+class TestCommandLine(unittest.TestCase):
+    def test_help_authors(self):
+        """Issue #5: --help lists author names, not the letters of one string."""
+        from csv2sef import cli
+        authors = cli._authors()
+        if not authors:
+            self.skipTest("csv2sef not installed (pip install -e .)")
+        self.assertIn("Vicky Slonosky", authors)
+        self.assertIn("Hervé Hacot", authors)
+        self.assertNotIn("V, i, c", authors)
+        self.assertNotIn("@", authors)
+
+
 class TestHalifax(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
