@@ -496,6 +496,15 @@ def make_report(data_path, table, md, columns, skipped, ignored, issues, records
                  f"{iu[:8]:8} {c.stat:8} {nval:6d} {nflag:7d}")
         for p in c.problems:
             L.append(f"    ! {p}")
+        for ch in md.unit_changes:                     # unit_change lines that apply to this column
+            if ch["var"] != c.var:
+                continue
+            f = dt.date.fromisoformat(ch["from"]) if ch["from"] else dt.date.min
+            u = unit_on(md, c.var, f, c.unit)
+            t = dt.date.fromisoformat(ch["to"]) if ch["to"] else dt.date.max
+            n = sum(1 for r in rs if f <= r["date"] <= t and r["iso_value"] is not None)
+            L.append(f"    > unit {u} from {ch['from'] or 'the start'} to {ch['to'] or 'the end'} "
+                     f"(unit_change): {n} value(s)")
     for hd, err in skipped:
         L.append(f"{hd[:28]:28} SKIPPED: {err}")
     if ignored:

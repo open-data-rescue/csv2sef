@@ -296,6 +296,20 @@ class TestOtherInputs(unittest.TestCase):
         pipeline.run(data, self.meta, outdir=out)
         p = sef_rows(glob.glob(os.path.join(out, "SEF", "*_p.tsv"))[0])
         self.assertEqual(p[0][6], "1014.98")                                 # hPa, not 761.3
+    def test_unit_change_in_check(self):
+        """Issue #10: check lists the units set by unit_change."""
+        data = os.path.join(self.d, "uc.csv")
+        with open(data, "w", newline="") as f:
+            csv.writer(f).writerows([["year", "month", "day", "ta 08:00 [F]"],
+                                     [1850, 1, 1, 32], [1851, 6, 1, 10], [1853, 1, 1, 50]])
+        with open(self.meta, "a", newline="") as f:
+            csv.writer(f).writerow(["unit_change", "ta; R; 1850-06-01; 1852-12-31"])
+        rep = pipeline.run(data, self.meta, check_only=True)
+        self.assertIn("> unit R from 1850-06-01 to 1852-12-31 (unit_change): 1 value(s)", rep)
+        out = os.path.join(self.d, "o7")
+        pipeline.run(data, self.meta, outdir=out)
+        ta = sef_rows(glob.glob(os.path.join(out, "SEF", "*_ta.tsv"))[0])
+        self.assertEqual([r[6] for r in ta], ["0", "12.5", "10"])             # F, R (10 R), F
 
     def test_template(self):
         p = os.path.join(self.d, "t.csv")
