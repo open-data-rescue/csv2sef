@@ -50,7 +50,7 @@ TEMPLATE = [
     ("daily_timestamp", "next_midnight"),
     ("keep_na", "yes"),
     ("range_region", "global"),
-    ("trace_mm", "0.2"),
+    ("trace_mm", "0.13"),
     ("midnight_means_daily", "no"),
     ("unmapped_weather_to_remarks", "yes"),
     ("caves_temperature_c", "12.8"),
@@ -69,7 +69,7 @@ UNIT_CHANGE_ROW = ("unit_change", "",
 
 DEFAULT_SETTINGS = {
     "convert_to_utc": "yes", "daily_timestamp": "next_midnight", "keep_na": "yes",
-    "range_region": "global", "trace_mm": "0.2", "tn_night_after": "no",
+    "range_region": "global", "trace_mm": "0.13", "tn_night_after": "no",
 }
 SITE_KEYS = {"name", "id", "lat", "lon", "alt", "source", "link", "project", "country",
              "observer", "utc_offset", "data_policy", "notes", "org", "timezone"}

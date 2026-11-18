@@ -65,33 +65,33 @@ id,category,var,unit,input,expected,expected_flag,tolerance,opts,source,note,sta
 064,wind,w,m/s,5,5.0,,0.01,,identity,,formula
 065,wind,w,lbsft,1,8.84,,0.01,,"P = 0.00256 V^2 (lb/ft2, mph); '3 15' = 3 lb 15 oz",,formula
 066,wind,w,lbsft,3 15,17.53,,0.01,,"P = 0.00256 V^2 (lb/ft2, mph); '3 15' = 3 lb 15 oz",,formula
-067,wind_beaufort,w,Bf,0,0.0,,0.15,,"WMO code 1100, mid-point of m/s range",rounding of mid-points to check,to_check
-068,wind_beaufort,w,Bf,1,0.9,,0.15,,"WMO code 1100, mid-point of m/s range",rounding of mid-points to check,to_check
-069,wind_beaufort,w,Bf,2,2.4,,0.15,,"WMO code 1100, mid-point of m/s range",rounding of mid-points to check,to_check
-070,wind_beaufort,w,Bf,3,4.4,,0.15,,"WMO code 1100, mid-point of m/s range",rounding of mid-points to check,to_check
-071,wind_beaufort,w,Bf,4,6.7,,0.15,,"WMO code 1100, mid-point of m/s range",rounding of mid-points to check,to_check
-072,wind_beaufort,w,Bf,5,9.3,,0.15,,"WMO code 1100, mid-point of m/s range",rounding of mid-points to check,to_check
-073,wind_beaufort,w,Bf,6,12.3,,0.15,,"WMO code 1100, mid-point of m/s range",rounding of mid-points to check,to_check
-074,wind_beaufort,w,Bf,7,15.5,,0.15,,"WMO code 1100, mid-point of m/s range",rounding of mid-points to check,to_check
-075,wind_beaufort,w,Bf,8,18.9,,0.15,,"WMO code 1100, mid-point of m/s range",rounding of mid-points to check,to_check
-076,wind_beaufort,w,Bf,9,22.6,,0.15,,"WMO code 1100, mid-point of m/s range",rounding of mid-points to check,to_check
-077,wind_beaufort,w,Bf,10,26.4,,0.15,,"WMO code 1100, mid-point of m/s range",rounding of mid-points to check,to_check
-078,wind_beaufort,w,Bf,11,30.5,,0.15,,"WMO code 1100, mid-point of m/s range",rounding of mid-points to check,to_check
-079,wind_beaufort,w,Bf,12,,,0.15,,"WMO code 1100, mid-point of m/s range",Force 12 has no upper bound: fill in the value the paper uses,to_fill
-080,wind_smithsonian,w,Sm,0,0.0,,0.05,,"Smithsonian scale 0 = 0 mph nominal (Table 4, Slonosky et al. 2026)",mph values written from memory of the Smithsonian instructions: check against Table 4,to_check
-081,wind_smithsonian,w,Sm,1,0.9,,0.05,,"Smithsonian scale 1 = 2 mph nominal (Table 4, Slonosky et al. 2026)",mph values written from memory of the Smithsonian instructions: check against Table 4,to_check
-082,wind_smithsonian,w,Sm,2,1.8,,0.05,,"Smithsonian scale 2 = 4 mph nominal (Table 4, Slonosky et al. 2026)",mph values written from memory of the Smithsonian instructions: check against Table 4,to_check
-083,wind_smithsonian,w,Sm,3,5.4,,0.05,,"Smithsonian scale 3 = 12 mph nominal (Table 4, Slonosky et al. 2026)",mph values written from memory of the Smithsonian instructions: check against Table 4,to_check
-084,wind_smithsonian,w,Sm,4,11.2,,0.05,,"Smithsonian scale 4 = 25 mph nominal (Table 4, Slonosky et al. 2026)",mph values written from memory of the Smithsonian instructions: check against Table 4,to_check
-085,wind_smithsonian,w,Sm,5,15.6,,0.05,,"Smithsonian scale 5 = 35 mph nominal (Table 4, Slonosky et al. 2026)",mph values written from memory of the Smithsonian instructions: check against Table 4,to_check
-086,wind_smithsonian,w,Sm,6,20.1,,0.05,,"Smithsonian scale 6 = 45 mph nominal (Table 4, Slonosky et al. 2026)",mph values written from memory of the Smithsonian instructions: check against Table 4,to_check
-087,wind_smithsonian,w,Sm,7,26.8,,0.05,,"Smithsonian scale 7 = 60 mph nominal (Table 4, Slonosky et al. 2026)",mph values written from memory of the Smithsonian instructions: check against Table 4,to_check
-088,wind_smithsonian,w,Sm,8,33.5,,0.05,,"Smithsonian scale 8 = 75 mph nominal (Table 4, Slonosky et al. 2026)",mph values written from memory of the Smithsonian instructions: check against Table 4,to_check
-089,wind_smithsonian,w,Sm,9,40.2,,0.05,,"Smithsonian scale 9 = 90 mph nominal (Table 4, Slonosky et al. 2026)",mph values written from memory of the Smithsonian instructions: check against Table 4,to_check
-090,wind_smithsonian,w,Sm,10,44.7,,0.05,,"Smithsonian scale 10 = 100 mph nominal (Table 4, Slonosky et al. 2026)",mph values written from memory of the Smithsonian instructions: check against Table 4,to_check
-091,wind_words,w,words,calm,0.0,,0.01,,calm = 0,,formula
-092,wind_words,w,words,fresh breeze,9.3,,0.15,,Beaufort 5,,formula
-093,wind_words,w,words,bonne brise,9.3,,0.15,,French Beaufort 5,,formula
+067,wind_beaufort,w,Bf,0,0,,0,,calm,"whole m/s, nearest 5 above 10: descriptive wind forces are estimates",formula
+068,wind_beaufort,w,Bf,1,1,,0,,"Table 4, Slonosky et al. 2026 (Beaufort equivalent of a Smithsonian force)","whole m/s, nearest 5 above 10: descriptive wind forces are estimates",formula
+069,wind_beaufort,w,Bf,2,2,,0,,"Table 4, Slonosky et al. 2026 (Beaufort equivalent of a Smithsonian force)","whole m/s, nearest 5 above 10: descriptive wind forces are estimates",formula
+070,wind_beaufort,w,Bf,3,5,,0,,"Table 4, Slonosky et al. 2026 (Beaufort equivalent of a Smithsonian force)","whole m/s, nearest 5 above 10: descriptive wind forces are estimates",formula
+071,wind_beaufort,w,Bf,4,7,,0,,"mid-point of the WMO m/s range, rounded","whole m/s, nearest 5 above 10: descriptive wind forces are estimates",formula
+072,wind_beaufort,w,Bf,5,10,,0,,"Table 4, Slonosky et al. 2026 (Beaufort equivalent of a Smithsonian force)","whole m/s, nearest 5 above 10: descriptive wind forces are estimates",formula
+073,wind_beaufort,w,Bf,6,12,,0,,"mid-point of the WMO m/s range, rounded","whole m/s, nearest 5 above 10: descriptive wind forces are estimates",formula
+074,wind_beaufort,w,Bf,7,15,,0,,"Table 4, Slonosky et al. 2026 (Beaufort equivalent of a Smithsonian force)","whole m/s, nearest 5 above 10: descriptive wind forces are estimates",formula
+075,wind_beaufort,w,Bf,8,20,,0,,"Table 4, Slonosky et al. 2026 (Beaufort equivalent of a Smithsonian force)","whole m/s, nearest 5 above 10: descriptive wind forces are estimates",formula
+076,wind_beaufort,w,Bf,9,25,,0,,"Table 4, Slonosky et al. 2026 (Beaufort equivalent of a Smithsonian force)","whole m/s, nearest 5 above 10: descriptive wind forces are estimates",formula
+077,wind_beaufort,w,Bf,10,30,,0,,between the paper's 25 (force 9) and 35 (force 11),"whole m/s, nearest 5 above 10: descriptive wind forces are estimates",formula
+078,wind_beaufort,w,Bf,11,35,,0,,"Table 4, Slonosky et al. 2026 (Beaufort equivalent of a Smithsonian force)","whole m/s, nearest 5 above 10: descriptive wind forces are estimates",formula
+079,wind_beaufort,w,Bf,12,40,,0,,"Table 4, Slonosky et al. 2026 (Beaufort equivalent of a Smithsonian force)","whole m/s, nearest 5 above 10: descriptive wind forces are estimates",formula
+080,wind_smithsonian,w,Sm,0,0,,0,,"Smithsonian scale 0 (0 mph): Eqv m/s, Table 4, Slonosky et al. 2026",whole m/s: descriptive wind forces are not precise,formula
+081,wind_smithsonian,w,Sm,1,1,,0,,"Smithsonian scale 1 (2 mph): Eqv m/s, Table 4, Slonosky et al. 2026",whole m/s: descriptive wind forces are not precise,formula
+082,wind_smithsonian,w,Sm,2,2,,0,,"Smithsonian scale 2 (4 mph): Eqv m/s, Table 4, Slonosky et al. 2026",whole m/s: descriptive wind forces are not precise,formula
+083,wind_smithsonian,w,Sm,3,5,,0,,"Smithsonian scale 3 (12 mph): Eqv m/s, Table 4, Slonosky et al. 2026",whole m/s: descriptive wind forces are not precise,formula
+084,wind_smithsonian,w,Sm,4,10,,0,,"Smithsonian scale 4 (25 mph): Eqv m/s, Table 4, Slonosky et al. 2026",whole m/s: descriptive wind forces are not precise,formula
+085,wind_smithsonian,w,Sm,5,15,,0,,"Smithsonian scale 5 (35 mph): Eqv m/s, Table 4, Slonosky et al. 2026",whole m/s: descriptive wind forces are not precise,formula
+086,wind_smithsonian,w,Sm,6,20,,0,,"Smithsonian scale 6 (45 mph): Eqv m/s, Table 4, Slonosky et al. 2026",whole m/s: descriptive wind forces are not precise,formula
+087,wind_smithsonian,w,Sm,7,25,,0,,"Smithsonian scale 7 (60 mph): Eqv m/s, Table 4, Slonosky et al. 2026",whole m/s: descriptive wind forces are not precise,formula
+088,wind_smithsonian,w,Sm,8,35,,0,,"Smithsonian scale 8 (75 mph): Eqv m/s, Table 4, Slonosky et al. 2026",whole m/s: descriptive wind forces are not precise,formula
+089,wind_smithsonian,w,Sm,9,40,,0,,"Smithsonian scale 9 (90 mph): Eqv m/s, Table 4, Slonosky et al. 2026",whole m/s: descriptive wind forces are not precise,formula
+090,wind_smithsonian,w,Sm,10,45,,0,,"Smithsonian scale 10 (100 mph): Eqv m/s, Table 4, Slonosky et al. 2026",whole m/s: descriptive wind forces are not precise,formula
+091,wind_words,w,words,calm,0,,0,,calm = 0,,formula
+092,wind_words,w,words,fresh breeze,10,,0,,Beaufort 5 = 10 m/s (Table 4),,formula
+093,wind_words,w,words,bonne brise,10,,0,,Beaufort 5 = 10 m/s (Table 4),,formula
 094,wind_words,w,words,word not in table,NA,unmapped,0.01,,"unknown term kept, NA",,formula
 095,direction,dd,dir,N,0,,0.01,,"16/32-point compass, 11.25 degrees per point",,formula
 096,direction,dd,dir,NNE,22.5,,0.01,,"16/32-point compass, 11.25 degrees per point",,formula
@@ -102,9 +102,9 @@ id,category,var,unit,input,expected,expected_flag,tolerance,opts,source,note,sta
 101,direction,dd,dir,200,200,,0.01,,"16/32-point compass, 11.25 degrees per point",,formula
 102,direction,dd,dir,calm,Calm,,,,calm,,formula
 103,direction,dd,dir,variable,Variable,,,,variable,,formula
-104,cloud,n,tenths,5,4.0,,0.01,,oktas = tenths x 0.8,,formula
-105,cloud,n,tenths,7,5.6,,0.01,,oktas = tenths x 0.8,"Inconsistent with tenths_clear, which uses the WMO integer table (7 tenths covered -> 6 oktas). Decide which to use.",to_check
-106,cloud,n,tenths,10,8.0,,0.01,,oktas = tenths x 0.8,,formula
+104,cloud,n,tenths,5,4,,0,,"tenths x 0.8 rounded to whole oktas (= WMO table 0,1,2,2,3,4,5,6,6,7,8)","Victoria 2026-11-18: whole oktas, same rule as clearness of sky",formula
+105,cloud,n,tenths,7,6,,0,,"tenths x 0.8 rounded to whole oktas (= WMO table 0,1,2,2,3,4,5,6,6,7,8)","Victoria 2026-11-18: whole oktas, same rule as clearness of sky",formula
+106,cloud,n,tenths,10,8,,0,,"tenths x 0.8 rounded to whole oktas (= WMO table 0,1,2,2,3,4,5,6,6,7,8)","Victoria 2026-11-18: whole oktas, same rule as clearness of sky",formula
 107,cloud,n,tenths,fog,9,,0.01,,obscured sky = 9,,formula
 108,cloud,n,tenths,clear,0,,0.01,,clear = 0,,formula
 109,cloud,n,okta,4,4.0,,0.01,,identity,,formula
@@ -114,22 +114,26 @@ id,category,var,unit,input,expected,expected_flag,tolerance,opts,source,note,sta
 113,cloud,n,tenths_clear,3,6,,0.01,,"tenths CLEAR -> tenths covered (10 - x) -> oktas, WMO code 2700 table (0,1,2,2,3,4,5,6,6,7,8)",Not covered by any worked example; breaks in GitHub cdr-utilities,formula
 114,cloud,cv,cloudvel,3,3,,0.01,,scale 0-10,,formula
 115,cloud,cv,cloudvel,p,1,,0.01,,perceptible = 1,,formula
-116,cloud_type,cl,lct,cumulus,,,,,WMO cloud atlas code,fill in the code you expect; the test run prints the current one,to_fill
-117,cloud_type,cl,lct,stratus,,,,,WMO cloud atlas code,fill in the code you expect; the test run prints the current one,to_fill
-118,cloud_type,cl,lct,cirrus,,,,,WMO cloud atlas code,fill in the code you expect; the test run prints the current one,to_fill
-119,cloud_type,cl,lct,nimbus,,,,,WMO cloud atlas code,fill in the code you expect; the test run prints the current one,to_fill
-120,cloud_type,cl,lct,cirro-stratus,,,,,WMO cloud atlas code,fill in the code you expect; the test run prints the current one,to_fill
-121,cloud_type,cl,lct,cumulo-nimbus,,,,,WMO cloud atlas code,fill in the code you expect; the test run prints the current one,to_fill
-122,cloud_type,ch,uct,cirrus,,,,,WMO cloud atlas code,fill in the code you expect,to_fill
-123,cloud_type,ch,uct,cirro-cumulus,,,,,WMO cloud atlas code,fill in the code you expect,to_fill
+116,cloud_type,cl,lct,cumulus,Cl2,,,,"Table 5, Slonosky et al. 2026",,formula
+117,cloud_type,cl,lct,stratus,Cl6,,,,"Table 5, Slonosky et al. 2026",,formula
+118,cloud_type,cl,lct,cirrus,Ch6,,,,"Table 5, Slonosky et al. 2026",cirrus types are high clouds in either column,formula
+119,cloud_type,cl,lct,nimbus,Cl7,,,,"Table 5, Slonosky et al. 2026",,formula
+120,cloud_type,cl,lct,cirro-stratus,Ch8,,,,"Table 5, Slonosky et al. 2026",cirrus types are high clouds in either column,formula
+121,cloud_type,cl,lct,cumulo-nimbus,Cl9,,,,WMO code 0513 (cumulonimbus); not in Table 5,,formula
+122,cloud_type,ch,uct,cirrus,Ch6,,,,"Table 5, Slonosky et al. 2026",cirrus types are high clouds in either column,formula
+123,cloud_type,ch,uct,cirro-cumulus,Ch9,,,,"Table 5, Slonosky et al. 2026",cirrus types are high clouds in either column,formula
 124,weather,ww,mno,rain & fog all day,RA FG,,,,weather_terms.csv / Victoria 2026-10-16,,formula
 125,weather,ww,mno,neige et poudrerie,BLSN SN,,,,weather_terms.csv / Victoria 2026-10-16,,formula
 126,weather,ww,mno,beautiful,SKC,,,,weather_terms.csv / Victoria 2026-10-16,,formula
 127,weather,ww,mno,sombre,OVC,,,,weather_terms.csv / Victoria 2026-10-16,,formula
 128,weather,ww,mno,snow,SN,,,,weather_terms.csv / Victoria 2026-10-16,,formula
-129,weather,ww,mno,thunder and lightning,,,,,synoptic code,fill in the code you expect,to_fill
-130,weather,ww,mno,hazy,,,,,synoptic code,fill in the code you expect,to_fill
-131,weather,ww,mno,overcast with drizzle,,,,,synoptic code,fill in the code you expect,to_fill
-132,weather,ww,mno,aurora borealis,,,,,synoptic code,fill in the code you expect,to_fill
+129,weather,ww,mno,thunder and lightning,TS LT,,,,"Table 6, Slonosky et al. 2026 (thunderstorm TS, lightning LT)",,formula
+130,weather,ww,mno,hazy,HZ,,,,Table 6 (haze HZ),,formula
+131,weather,ww,mno,overcast with drizzle,DZ OVC,,,,Table 6 (drizzle DZ); OVC sky condition as approved for 'sombre',,formula
+132,weather,ww,mno,aurora borealis,AU,,,,csv2sef convention,"aurora is its own variable (au) in the paper, with no synoptic code",formula
 133,text,remarks,text,Ice broke up in the river,Ice broke up in the river,,,,free text kept verbatim,,formula
 134,ozone,oz,oz,7,7,,,,"ozone scale, no conversion",,formula
+135,cloud,n,tenths,3,2,,0,,tenths x 0.8 rounded to whole oktas,Victoria 2026-11-18,formula
+136,cloud,n,tenths,8,6,,0,,tenths x 0.8 rounded to whole oktas,Victoria 2026-11-18,formula
+137,cloud,n,tenths,9,7,,0,,tenths x 0.8 rounded to whole oktas,Victoria 2026-11-18,formula
+138,precipitation,rr,in,trace,0.13,trace,0,,"0.005 in = 0.13 mm (Table 8, Slonosky et al. 2026); default when trace_mm is not set",,formula

@@ -281,6 +281,8 @@ def c_ParisLine(v, var, ctx, log, opts):
     return None, lines, _r(lmr.baro_Fr_in2mb(lines / 12.0))
 
 
+# trace = 0.005 in (0.13 mm), Table 8 of Slonosky et al. (2026); metadata trace_mm changes it
+TRACE_MM = 0.13
 TRACE_TERMS = ["trace", "slight", "meas", "inapp", "in."]
 NIL_TERMS = {"nil", "no rain", "no snow"}
 LITTLE_TERMS = {"a little", "little", "some", "a few", "un peu", "peu", "quelque"}
@@ -292,10 +294,10 @@ def _precip(v, var, ctx, log, opts, to_mm):
     if vl in NIL_TERMS:
         return "no entry", 0.0, 0.0
     if any(x in vl for x in TRACE_TERMS) or vl in ("in", "t", "tr"):
-        mm = float(opts.get("trace_mm", 0.2))
+        mm = float(opts.get("trace_mm", TRACE_MM))
         return "trace", round(mm / to_mm, 4), _r(mm)
     if vl in LITTLE_TERMS:
-        mm = float(opts.get("trace_mm", 0.2))
+        mm = float(opts.get("trace_mm", TRACE_MM))
         log.write(ctx, "QUALITATIVE", f"'{v}': treated as trace")
         return "trace; qualitative", v, _r(mm)
     if not re.search(r"\d", vl):
@@ -432,7 +434,7 @@ def c_tenths(v, var, ctx, log, opts):
     if t < 0 or t > 10:
         log.write(ctx, "RANGE", f"Cloud amount {t:g} tenths: out of range")
         return "out of range", t, None
-    return None, t, _r(t * 0.8)
+    return None, t, int(round(t * 0.8))      # whole oktas (= WMO table 0,1,2,2,3,4,5,6,6,7,8)
 
 
 def c_okta(v, var, ctx, log, opts):

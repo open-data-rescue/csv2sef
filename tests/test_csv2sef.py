@@ -52,13 +52,13 @@ class TestConversions(unittest.TestCase):
         self.assertEqual(conv("0.5", "rr", "in")[2], 12.7)
         self.assertEqual(conv("inapp", "rr", "in")[0], "trace")
         self.assertEqual(conv("2", "sd", "in")[3], "cm")
-        self.assertEqual(conv("fresh breeze", "w", "words")[2], 9.3)
-        self.assertEqual(conv("bonne brise", "w", "words")[2], 9.3)
+        self.assertEqual(conv("fresh breeze", "w", "words")[2], 10)
+        self.assertEqual(conv("bonne brise", "w", "words")[2], 10)
         self.assertEqual(conv("10", "w", "kt")[2], 5.14)
         self.assertEqual(conv("NNE", "dd", "dir")[2], 22.5)
         self.assertEqual(conv("rain & fog all day", "ww", "mno")[2], "RA FG")
         self.assertEqual(conv("neige et poudrerie", "ww", "mno")[2], "BLSN SN")
-        self.assertEqual(conv("7", "n", "tenths")[2], 5.6)
+        self.assertEqual(conv("7", "n", "tenths")[2], 6)
 
     def test_historical_notation(self):
         self.assertEqual(conv("10+c", "ta", "R")[:3], ("caves notation", "10+c", 25.3))   # 12.8 + 12.5
@@ -111,7 +111,7 @@ class TestHalifax(unittest.TestCase):
         ta = sef_rows(self.files["ta"])
         self.assertEqual(ta[0][:7], ["1863", "11", "1", "11", "0", "0", "14.56"])  # 07:00 local = 11:00 UTC
         w = {tuple(r[:3]): r for r in sef_rows(self.files["w"])}
-        self.assertEqual(w[("1865", "1", "1")][6], "12.3")                 # SB = strong breeze
+        self.assertEqual(w[("1865", "1", "1")][6], "12")                 # SB = strong breeze
         self.assertIn("qc=unknown", w[("1865", "2", "14")][7])             # s/o
         tn = sef_rows(self.files["Tn"])
         self.assertEqual(tn[0][:7], ["1863", "11", "2", "0", "0", "day", "2.22"])  # next midnight

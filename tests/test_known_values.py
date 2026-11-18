@@ -35,7 +35,7 @@ from csv2sef import tables                                     # noqa: E402
 from csv2sef.convert import Context, Logger, process_value     # noqa: E402
 
 TABLE = os.path.join(HERE, "known_values.csv")
-BASE_OPTS = {"trace_mm": 0.2, "wind_words": tables.wind_words(),
+BASE_OPTS = {"wind_words": tables.wind_words(),               # trace_mm: csv2sef default, unless a row sets it
              "weather_terms": tables.weather_terms()}
 
 
