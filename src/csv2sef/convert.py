@@ -481,8 +481,22 @@ ABBR_TO_DEG.update({"northeast": 45, "northwest": 315, "southeast": 135, "southw
                     "nno": 337.5, "sso": 202.5})
 
 
+# Table 5: "hidden" - fog or thick lower clouds hide the higher clouds, so their direction can't be seen
+HIDDEN_WORDS = {"hidden", "obscured", "haze", "hazy", "fog", "foggy", "smoke", "mist"}
+NO_CLOUD_WORDS = {"clear", "no clouds", "cloudless"}
+
+
 def c_dir(v, var, ctx, log, opts):
-    vl = v.strip().lower().replace(".", "").replace(" by ", "by")
+    raw = v.strip().lower()
+    if raw in ("-999", "-999.0", "-999.9", "-9999"):
+        return "missing", v, None                       # missing-value code in a direction column
+    if raw in ("-888", "-888.0", "-888.8"):
+        return "instrument error", v, None
+    vl = raw.replace(".", "").replace(" by ", "by")
+    if vl in HIDDEN_WORDS:
+        return "hidden", v, None                        # clouds hidden: direction can't be seen
+    if vl in NO_CLOUD_WORDS and var != "dd":
+        return "no clouds", v, "Calm"                   # same value as "none", flagged
     if vl in ("calm", "c", "0", "none", "not perceptible", "imp", "calme"):
         return None, v, "Calm"
     if vl.startswith("var"):

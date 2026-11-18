@@ -86,6 +86,17 @@ class TestConversions(unittest.TestCase):
         self.assertEqual(conv("3", "fs", "in")[3], "cm")
         self.assertEqual(conv("point de vent", "w", "Sm")[2], 0.0)
 
+    def test_direction_values(self):
+        """Issue #7: missing codes, hidden and clear in direction columns."""
+        self.assertEqual(conv("-999", "hd", "dir")[:3], ("missing", "-999", None))
+        self.assertEqual(conv("-888", "dd", "dir")[0], "instrument error")
+        self.assertEqual(conv("hidden", "hd", "dir")[:3], ("hidden", "hidden", None))
+        self.assertEqual(conv("Haze", "hd", "dir")[0], "hidden")
+        self.assertEqual(conv("clear", "cd", "dir")[:3], ("no clouds", "clear", "Calm"))
+        self.assertEqual(conv("clear", "dd", "dir")[0], "unmapped")          # wind: not a cloud
+        self.assertEqual(conv("north-west", "hd", "dir")[2], 315)
+        self.assertEqual(conv("calm", "dd", "dir")[2], "Calm")
+
     def test_flags(self):
         self.assertEqual(conv("M", "ta", "F")[0], "missing")
         self.assertEqual(conv("37.?", "ta", "F")[:3], ("uncertain", 37.0, 2.78))
