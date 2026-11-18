@@ -191,6 +191,30 @@ class TestOtherInputs(unittest.TestCase):
         ta = sef_rows(glob.glob(os.path.join(out, "SEF", "*_ta.tsv"))[0])
         self.assertEqual(ta[0][3:7], ["13", "0", "0", "25.3"])
 
+    def test_hour_in_field_name(self):
+        """Issue #4: database field names that already end in the hour ('..._7am') plus a time
+        column: fixed-hour readings keep their hour (not read as daily values)."""
+        from csv2sef.headers import split_time_suffix
+        self.assertEqual(split_time_suffix("attached_thermometer_7am"), ("attached_thermometer", (7, 0), "7am"))
+        self.assertEqual(split_time_suffix("clearness_sky_sunrise")[1], (6, 0))
+        for name in ("casual_phenomena_line_2", "barometer_observed_117", "attached_thermometer_9pm_1",
+                     "open_air_thermometer_mean"):
+            self.assertEqual(split_time_suffix(name), (name, None, None))           # bare numbers: not times
+        data = os.path.join(self.d, "hour.csv")
+        with open(data, "w", newline="") as f:
+            csv.writer(f).writerows([
+                ["StationName", "ObservationDate", "value", "unit", "field_key"],
+                ["X", "1876-01-01 07:00:00", "-30", "F", "air_temperature_7am"],
+                ["X", "1876-01-01 14:00:00", "-14.5", "F", "air_temperature_2pm"],
+                ["X", "1876-01-01 20:00:00", "-8", "F", "air_temperature_9pm"]])     # name and time disagree
+        out = os.path.join(self.d, "o5")
+        rep = pipeline.run(data, self.meta, outdir=out)
+        self.assertIn("all files valid", rep)
+        self.assertNotIn("could not read time", rep)
+        self.assertIn("says 9pm, time column says 20:00: time column used", rep)
+        ta = sef_rows(glob.glob(os.path.join(out, "SEF", "*_ta.tsv"))[0])
+        self.assertEqual([r[3:6] for r in ta], [["12", "0", "0"], ["19", "0", "0"], ["1", "0", "0"]])  # UTC-5
+
     def test_template(self):
         p = os.path.join(self.d, "t.csv")
         mdmod.write_template(p, [("ta", "F", "Air temperature")])

@@ -12,7 +12,7 @@ from . import metadata as mdmod
 from . import reader, sef, tables
 from .checks import cross_checks, range_check
 from .convert import Context, Logger, process_value
-from .headers import normalise, parse_time, parse_when, split_unit
+from .headers import normalise, parse_time, parse_when, split_time_suffix, split_unit
 
 # columns that identify the record rather than holding observations: ignored quietly
 ID_COLUMNS = {"observer", "observer id", "observer_id", "station", "station id", "station_id",
@@ -213,12 +213,23 @@ def observations(table, md, log):
                     ignored.append(hd)
                 continue
             t = row[lc["time"]].strip() if "time" in lc else (dtime or "")
-            if t and not (midnight_daily and t in ("00:00", "0:00", "00:00:00")):
-                hd += " " + t
-            if "unit" in lc and row[lc["unit"]].strip():
-                hd += f" [{row[lc['unit']].strip()}]"
+            use_t = bool(t) and not (midnight_daily and t in ("00:00", "0:00", "00:00:00"))
+            unit_txt = row[lc["unit"]].strip() if "unit" in lc else ""
+            name = hd
+            hd = name + (" " + t if use_t else "") + (f" [{unit_txt}]" if unit_txt else "")
             if hd not in cache:
                 c, err = resolve_column(-1, hd, md)
+                # field name that already ends in the hour ('attached_thermometer_7am') plus the
+                # time column ('07:00'): read the name without its hour, and use the time column
+                if c and use_t and any("could not read time" in p for p in c.problems):
+                    base, ftime, tok = split_time_suffix(name)
+                    if ftime is not None:
+                        c2, _ = resolve_column(-1, base + " " + t + (f" [{unit_txt}]" if unit_txt else ""), md)
+                        if c2 and not any("could not read time" in p for p in c2.problems):
+                            if parse_time(t) not in (None, ftime):
+                                c2.problems.append(f"field name {name} says {tok}, time column says {t}: "
+                                                   f"time column used")
+                            c = c2
                 cache[hd] = c
                 if c:
                     columns.append(c)
