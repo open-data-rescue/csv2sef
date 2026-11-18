@@ -4,14 +4,14 @@ requires-python = ">=3.14"
 
 [[package]]
 name = "cdrutilities"
-version = "1.0.1"
+version = "1.0.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "numpy" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/87/01/b3ff667411e8d0fb99ddf3c3397bb41aa69dd3807ee6f2372756c3155547/cdrutilities-1.0.1.tar.gz", hash = "sha256:16caada44149c1a413c8adbdc542b69b18140a0cb50bb9bec41d0c1c627f2383", size = 34165, upload-time = "2026-11-13T15:56:36.071Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/de/da/35c57d6c0b46775bed1acca7691dce5217737ab83c152884f74a9c83b0d6/cdrutilities-1.0.2.tar.gz", hash = "sha256:dc30b8b91432788ad36499166b49e6b64f6f5452b5dcc8838f1a0d3560ea2ac7", size = 49239, upload-time = "2026-11-18T16:51:29.839Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/00/f9/5ca0fff0f95d6df46eb6fae1c67959b997639eb969aecf233de0b091755f/cdrutilities-1.0.1-py3-none-any.whl", hash = "sha256:8b70b53e32f97b5420335140567001170357195919c73965c0e560be64ee0ef2", size = 25968, upload-time = "2026-11-13T15:56:34.664Z" },
+    { url = "https://files.pythonhosted.org/packages/65/82/006b8427991370a5e9e057af3a71f1807ed75249d3ff9d0fbb64acb874c6/cdrutilities-1.0.2-py3-none-any.whl", hash = "sha256:64be77903c18b06c7211171209111eb04327244cf42996399d7c217894df605d", size = 25974, upload-time = "2026-11-18T16:51:28.521Z" },
 ]
 
 [[package]]
@@ -22,7 +22,7 @@ dependencies = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "cdrutilities", specifier = ">=1.0.1" }]
+requires-dist = [{ name = "cdrutilities", specifier = ">=1.0.2" }]
 
 [[package]]
 name = "numpy"

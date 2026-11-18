@@ -1,0 +1,135 @@
+id,category,var,unit,input,expected,expected_flag,tolerance,opts,source,note,status
+001,temperature,ta,F,32,0.0,,0.01,,C = (F - 32) x 5/9,,formula
+002,temperature,ta,F,212,100.0,,0.01,,C = (F - 32) x 5/9,,formula
+003,temperature,ta,F,-40,-40.0,,0.01,,C = (F - 32) x 5/9,,formula
+004,temperature,ta,F,58.2,14.56,,0.01,,C = (F - 32) x 5/9,,formula
+005,temperature,ta,F,0,-17.78,,0.01,,C = (F - 32) x 5/9,,formula
+006,temperature,ta,C,10,10.0,,0.01,,identity,,formula
+007,temperature,ta,R,80,100.0,,0.01,,C = R x 5/4 (Reaumur: 80 = boiling),,formula
+008,temperature,ta,R,10,12.5,,0.01,,C = R x 5/4 (Reaumur: 80 = boiling),,formula
+009,temperature,ta,R,-10,-12.5,,0.01,,C = R x 5/4 (Reaumur: 80 = boiling),,formula
+010,temperature,ta,De,150,0.0,,0.01,,"Delisle: 0 = boiling, 150 = freezing; C = 100 - De x 2/3",,formula
+011,temperature,ta,De,0,100.0,,0.01,,"Delisle: 0 = boiling, 150 = freezing; C = 100 - De x 2/3",,formula
+012,temperature,ta,De,165,-10.0,,0.01,,"Delisle: 0 = boiling, 150 = freezing; C = 100 - De x 2/3",,formula
+013,temperature,ta,De_frz,15,10.0,,0.01,,Delisle degrees from freezing; C = x x 2/3 (Victoria 2026-10-16),,formula
+014,temperature,ta,F,37 1/2,3.06,,0.01,,fraction 37 1/2 F,,formula
+015,temperature,ta,F,37.?,2.78,uncertain,0.01,,"'?' removed, flagged (Table 8)",,formula
+016,temperature,ta,F,-,NA,missing,0.01,,missing marker,,formula
+017,temperature,ta,F,"""",NA,ditto,0.01,,ditto mark: not reconstructed,,formula
+018,temperature,ta,F,16R,20.0,unit R,0.01,,unit letter overrides column unit (Victoria 2026-10-16),,formula
+019,temperature_diff,ta_range,Fdiff,9,5.0,,0.01,,difference: x 5/9,,formula
+020,temperature_diff,ta_range,Cdiff,5,5.0,,0.01,,identity,,formula
+021,caves,ta,De_frz,9-0,6.8,caves notation,0.01,caves_temperature_c=12.8,12.8 - 9 x 2/3 (Gaultier lines 330/335),,formula
+022,caves,ta,De_frz,15+c,22.8,caves notation,0.01,caves_temperature_c=12.8,12.8 + 15 x 2/3 (Gaultier line 2433),,formula
+023,caves,ta,De_frz,24+c,28.8,caves notation,0.01,caves_temperature_c=12.8,12.8 + 24 x 2/3 (Gaultier line 2716),,formula
+024,caves,ta,De_frz,16+0 R,32.8,caves notation,0.01,caves_temperature_c=12.8,12.8 + 16 x 5/4 (R letter),,formula
+025,caves,ta,De_frz,14+,22.13,caves notation (assumed),0.01,caves_temperature_c=12.8,"no token: caves assumed, flagged",,formula
+026,caves,ta,De_frz,co,12.8,caves notation,0.01,caves_temperature_c=12.8,caves = 12.8 C,,formula
+027,caves,ta,De_frz,5=c,NA,"caves notation, sign unclear",0.01,caves_temperature_c=12.8,"x=c, x != 0: not converted",,formula
+028,caves,ta,De_frz,-1R,-1.25,unit R,0.01,caves_temperature_c=12.8,Gaultier line 2596,,formula
+029,below_scale,ta,F,<=-34,-34.0,at or below,0.01,below_scale_c=-34,mercury in bulb rule (Victoria 2026-10-16),,formula
+030,below_scale,ta,F,mercury in bulb,-34.0,at or below; below scale,0.01,below_scale_c=-34,mercury in bulb = -34 C,,formula
+031,below_scale,ta,F,<=-30,-34.44,at or below,0.01,,no below_scale_c: column unit used,,formula
+032,pressure,p,inHg,29.9213,1013.25,,0.01,,1 inHg = 33.8639 hPa (List 1966; WMO 1966),,formula
+033,pressure,p,inHg,30.00,1015.92,,0.01,,1 inHg = 33.8639 hPa (List 1966; WMO 1966),,formula
+034,pressure,p,inHg,29.71,1006.1,,0.01,,1 inHg = 33.8639 hPa (List 1966; WMO 1966),,formula
+035,pressure,p,mmHg,760,1013.25,,0.01,,1 mmHg = 1.333224 hPa (List 1966),,formula
+036,pressure,p,mmHg,750,999.92,,0.01,,1 mmHg = 1.333224 hPa (List 1966),,formula
+037,pressure,p,hPa,1013.2,1013.2,,0.01,,identity,,formula
+038,pressure,p,ParisIn,28,1010.53,,0.01,,1 Paris inch = 12 lines = 27.07 mm (IMC 1890); then mm -> hPa,Not covered by any worked example; breaks in GitHub cdr-utilities,formula
+039,pressure,p,ParisIn,27 11,1007.52,,0.01,,1 Paris inch = 12 lines = 27.07 mm (IMC 1890); then mm -> hPa,Not covered by any worked example; breaks in GitHub cdr-utilities,formula
+040,pressure,p,ParisIn,27 11.5,1009.02,,0.01,,1 Paris inch = 12 lines = 27.07 mm (IMC 1890); then mm -> hPa,Not covered by any worked example; breaks in GitHub cdr-utilities,formula
+041,pressure,p,ParisIn,27p 10l,1004.51,,0.01,,1 Paris inch = 12 lines = 27.07 mm (IMC 1890); then mm -> hPa,Not covered by any worked example; breaks in GitHub cdr-utilities,formula
+042,pressure,p,ParisLine,336,1010.53,,0.01,,12 Paris lines = 1 Paris inch,,formula
+043,pressure,p,ParisLine,330,992.48,,0.01,,12 Paris lines = 1 Paris inch,,formula
+044,vapour_pressure,e,inHg,0.245,8.3,,0.01,,1 inHg = 33.8639 hPa,,formula
+045,vapour_pressure,e,inHg,245,8.3,missing decimal,0.01,,vapour pressure written without decimal,,formula
+046,precipitation,rr,in,1,25.4,,0.01,,1 in = 25.4 mm,,formula
+047,precipitation,rr,in,0.5,12.7,,0.01,,1 in = 25.4 mm,,formula
+048,precipitation,rr,mm,10,10.0,,0.01,,identity,,formula
+049,precipitation,rr,cm,1,10.0,,0.01,,1 cm = 10 mm,,formula
+050,precipitation,rr,in,inapp,0.2,trace,0.01,trace_mm=0.2,trace default 0.2 mm,,formula
+051,precipitation,rr,in,a little,0.2,trace; qualitative,0.01,trace_mm=0.2,'a little' = trace (Victoria 2026-10-16),,formula
+052,precipitation,rr,in,nil,0.0,no entry,0.01,,nil = 0,,formula
+053,precipitation,rr,in,Rain,NA,qualitative,0.01,,"occurrence only, amount unknown",,formula
+054,precipitation,rr,in,0.25 | 0.10,8.89,two values added,0.01,,two amounts in one cell are added,,formula
+055,snow,sd,in,2,5.08,,0.01,,2 in = 5.08 cm (snow written in cm),,formula
+056,snow,fs,in,4,10.16,,0.01,,snowfall in cm (Montreal Barr),,formula
+057,snow,fs,cm,1,1.0,,0.01,,"identity, cm",,formula
+058,distance,wr,mi,10,16093,,1,,1 mile = 1609.344 m,,formula
+059,humidity,rh,%,85,85.0,,0.01,,identity,,formula
+060,humidity,rh,%,0.85,85.0,multiply by 100,0.01,,fraction -> percent,,formula
+061,wind,w,mph,10,4.47,,0.01,,1 mph = 0.44704 m/s,,formula
+062,wind,w,kt,10,5.14,,0.01,,1 kt = 0.514444 m/s,,formula
+063,wind,w,km/h,36,10.0,,0.01,,1 km/h = 1/3.6 m/s,,formula
+064,wind,w,m/s,5,5.0,,0.01,,identity,,formula
+065,wind,w,lbsft,1,8.84,,0.01,,"P = 0.00256 V^2 (lb/ft2, mph); '3 15' = 3 lb 15 oz",,formula
+066,wind,w,lbsft,3 15,17.53,,0.01,,"P = 0.00256 V^2 (lb/ft2, mph); '3 15' = 3 lb 15 oz",,formula
+067,wind_beaufort,w,Bf,0,0.0,,0.15,,"WMO code 1100, mid-point of m/s range",rounding of mid-points to check,to_check
+068,wind_beaufort,w,Bf,1,0.9,,0.15,,"WMO code 1100, mid-point of m/s range",rounding of mid-points to check,to_check
+069,wind_beaufort,w,Bf,2,2.4,,0.15,,"WMO code 1100, mid-point of m/s range",rounding of mid-points to check,to_check
+070,wind_beaufort,w,Bf,3,4.4,,0.15,,"WMO code 1100, mid-point of m/s range",rounding of mid-points to check,to_check
+071,wind_beaufort,w,Bf,4,6.7,,0.15,,"WMO code 1100, mid-point of m/s range",rounding of mid-points to check,to_check
+072,wind_beaufort,w,Bf,5,9.3,,0.15,,"WMO code 1100, mid-point of m/s range",rounding of mid-points to check,to_check
+073,wind_beaufort,w,Bf,6,12.3,,0.15,,"WMO code 1100, mid-point of m/s range",rounding of mid-points to check,to_check
+074,wind_beaufort,w,Bf,7,15.5,,0.15,,"WMO code 1100, mid-point of m/s range",rounding of mid-points to check,to_check
+075,wind_beaufort,w,Bf,8,18.9,,0.15,,"WMO code 1100, mid-point of m/s range",rounding of mid-points to check,to_check
+076,wind_beaufort,w,Bf,9,22.6,,0.15,,"WMO code 1100, mid-point of m/s range",rounding of mid-points to check,to_check
+077,wind_beaufort,w,Bf,10,26.4,,0.15,,"WMO code 1100, mid-point of m/s range",rounding of mid-points to check,to_check
+078,wind_beaufort,w,Bf,11,30.5,,0.15,,"WMO code 1100, mid-point of m/s range",rounding of mid-points to check,to_check
+079,wind_beaufort,w,Bf,12,,,0.15,,"WMO code 1100, mid-point of m/s range",Force 12 has no upper bound: fill in the value the paper uses,to_fill
+080,wind_smithsonian,w,Sm,0,0.0,,0.05,,"Smithsonian scale 0 = 0 mph nominal (Table 4, Slonosky et al. 2026)",mph values written from memory of the Smithsonian instructions: check against Table 4,to_check
+081,wind_smithsonian,w,Sm,1,0.9,,0.05,,"Smithsonian scale 1 = 2 mph nominal (Table 4, Slonosky et al. 2026)",mph values written from memory of the Smithsonian instructions: check against Table 4,to_check
+082,wind_smithsonian,w,Sm,2,1.8,,0.05,,"Smithsonian scale 2 = 4 mph nominal (Table 4, Slonosky et al. 2026)",mph values written from memory of the Smithsonian instructions: check against Table 4,to_check
+083,wind_smithsonian,w,Sm,3,5.4,,0.05,,"Smithsonian scale 3 = 12 mph nominal (Table 4, Slonosky et al. 2026)",mph values written from memory of the Smithsonian instructions: check against Table 4,to_check
+084,wind_smithsonian,w,Sm,4,11.2,,0.05,,"Smithsonian scale 4 = 25 mph nominal (Table 4, Slonosky et al. 2026)",mph values written from memory of the Smithsonian instructions: check against Table 4,to_check
+085,wind_smithsonian,w,Sm,5,15.6,,0.05,,"Smithsonian scale 5 = 35 mph nominal (Table 4, Slonosky et al. 2026)",mph values written from memory of the Smithsonian instructions: check against Table 4,to_check
+086,wind_smithsonian,w,Sm,6,20.1,,0.05,,"Smithsonian scale 6 = 45 mph nominal (Table 4, Slonosky et al. 2026)",mph values written from memory of the Smithsonian instructions: check against Table 4,to_check
+087,wind_smithsonian,w,Sm,7,26.8,,0.05,,"Smithsonian scale 7 = 60 mph nominal (Table 4, Slonosky et al. 2026)",mph values written from memory of the Smithsonian instructions: check against Table 4,to_check
+088,wind_smithsonian,w,Sm,8,33.5,,0.05,,"Smithsonian scale 8 = 75 mph nominal (Table 4, Slonosky et al. 2026)",mph values written from memory of the Smithsonian instructions: check against Table 4,to_check
+089,wind_smithsonian,w,Sm,9,40.2,,0.05,,"Smithsonian scale 9 = 90 mph nominal (Table 4, Slonosky et al. 2026)",mph values written from memory of the Smithsonian instructions: check against Table 4,to_check
+090,wind_smithsonian,w,Sm,10,44.7,,0.05,,"Smithsonian scale 10 = 100 mph nominal (Table 4, Slonosky et al. 2026)",mph values written from memory of the Smithsonian instructions: check against Table 4,to_check
+091,wind_words,w,words,calm,0.0,,0.01,,calm = 0,,formula
+092,wind_words,w,words,fresh breeze,9.3,,0.15,,Beaufort 5,,formula
+093,wind_words,w,words,bonne brise,9.3,,0.15,,French Beaufort 5,,formula
+094,wind_words,w,words,word not in table,NA,unmapped,0.01,,"unknown term kept, NA",,formula
+095,direction,dd,dir,N,0,,0.01,,"16/32-point compass, 11.25 degrees per point",,formula
+096,direction,dd,dir,NNE,22.5,,0.01,,"16/32-point compass, 11.25 degrees per point",,formula
+097,direction,dd,dir,E,90,,0.01,,"16/32-point compass, 11.25 degrees per point",,formula
+098,direction,dd,dir,SW,225,,0.01,,"16/32-point compass, 11.25 degrees per point",,formula
+099,direction,dd,dir,NW,315,,0.01,,"16/32-point compass, 11.25 degrees per point",,formula
+100,direction,dd,dir,N by E,11.25,,0.01,,"16/32-point compass, 11.25 degrees per point",,formula
+101,direction,dd,dir,200,200,,0.01,,"16/32-point compass, 11.25 degrees per point",,formula
+102,direction,dd,dir,calm,Calm,,,,calm,,formula
+103,direction,dd,dir,variable,Variable,,,,variable,,formula
+104,cloud,n,tenths,5,4.0,,0.01,,oktas = tenths x 0.8,,formula
+105,cloud,n,tenths,7,5.6,,0.01,,oktas = tenths x 0.8,"Inconsistent with tenths_clear, which uses the WMO integer table (7 tenths covered -> 6 oktas). Decide which to use.",to_check
+106,cloud,n,tenths,10,8.0,,0.01,,oktas = tenths x 0.8,,formula
+107,cloud,n,tenths,fog,9,,0.01,,obscured sky = 9,,formula
+108,cloud,n,tenths,clear,0,,0.01,,clear = 0,,formula
+109,cloud,n,okta,4,4.0,,0.01,,identity,,formula
+110,cloud,n,tenths_clear,10,0,,0.01,,"tenths CLEAR -> tenths covered (10 - x) -> oktas, WMO code 2700 table (0,1,2,2,3,4,5,6,6,7,8)",Not covered by any worked example; breaks in GitHub cdr-utilities,formula
+111,cloud,n,tenths_clear,0,8,,0.01,,"tenths CLEAR -> tenths covered (10 - x) -> oktas, WMO code 2700 table (0,1,2,2,3,4,5,6,6,7,8)",Not covered by any worked example; breaks in GitHub cdr-utilities,formula
+112,cloud,n,tenths_clear,5,4,,0.01,,"tenths CLEAR -> tenths covered (10 - x) -> oktas, WMO code 2700 table (0,1,2,2,3,4,5,6,6,7,8)",Not covered by any worked example; breaks in GitHub cdr-utilities,formula
+113,cloud,n,tenths_clear,3,6,,0.01,,"tenths CLEAR -> tenths covered (10 - x) -> oktas, WMO code 2700 table (0,1,2,2,3,4,5,6,6,7,8)",Not covered by any worked example; breaks in GitHub cdr-utilities,formula
+114,cloud,cv,cloudvel,3,3,,0.01,,scale 0-10,,formula
+115,cloud,cv,cloudvel,p,1,,0.01,,perceptible = 1,,formula
+116,cloud_type,cl,lct,cumulus,,,,,WMO cloud atlas code,fill in the code you expect; the test run prints the current one,to_fill
+117,cloud_type,cl,lct,stratus,,,,,WMO cloud atlas code,fill in the code you expect; the test run prints the current one,to_fill
+118,cloud_type,cl,lct,cirrus,,,,,WMO cloud atlas code,fill in the code you expect; the test run prints the current one,to_fill
+119,cloud_type,cl,lct,nimbus,,,,,WMO cloud atlas code,fill in the code you expect; the test run prints the current one,to_fill
+120,cloud_type,cl,lct,cirro-stratus,,,,,WMO cloud atlas code,fill in the code you expect; the test run prints the current one,to_fill
+121,cloud_type,cl,lct,cumulo-nimbus,,,,,WMO cloud atlas code,fill in the code you expect; the test run prints the current one,to_fill
+122,cloud_type,ch,uct,cirrus,,,,,WMO cloud atlas code,fill in the code you expect,to_fill
+123,cloud_type,ch,uct,cirro-cumulus,,,,,WMO cloud atlas code,fill in the code you expect,to_fill
+124,weather,ww,mno,rain & fog all day,RA FG,,,,weather_terms.csv / Victoria 2026-10-16,,formula
+125,weather,ww,mno,neige et poudrerie,BLSN SN,,,,weather_terms.csv / Victoria 2026-10-16,,formula
+126,weather,ww,mno,beautiful,SKC,,,,weather_terms.csv / Victoria 2026-10-16,,formula
+127,weather,ww,mno,sombre,OVC,,,,weather_terms.csv / Victoria 2026-10-16,,formula
+128,weather,ww,mno,snow,SN,,,,weather_terms.csv / Victoria 2026-10-16,,formula
+129,weather,ww,mno,thunder and lightning,,,,,synoptic code,fill in the code you expect,to_fill
+130,weather,ww,mno,hazy,,,,,synoptic code,fill in the code you expect,to_fill
+131,weather,ww,mno,overcast with drizzle,,,,,synoptic code,fill in the code you expect,to_fill
+132,weather,ww,mno,aurora borealis,,,,,synoptic code,fill in the code you expect,to_fill
+133,text,remarks,text,Ice broke up in the river,Ice broke up in the river,,,,free text kept verbatim,,formula
+134,ozone,oz,oz,7,7,,,,"ozone scale, no conversion",,formula

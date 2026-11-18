@@ -1,0 +1,39 @@
+name: Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.14"]
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0          # full history, so setuptools-scm can work out the version
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install csv2sef
+        run: pip install -e .
+
+      - name: Run the tests
+        run: python -m unittest discover -s tests -v
+
+      - name: Convert the examples
+        run: |
+          cd examples/YorkFactoryHBC
+          csv2sef convert YorkFactory-HBC_1773_wide.csv YorkFactoryHBC_metadata.csv -o /tmp/out1
+          csv2sef convert YorkFactory-HBC_1773_long.csv YorkFactoryHBC_metadata.csv -o /tmp/out2
+          cd ../Hebron
+          csv2sef convert Hebron_Pressure_1883-09_1883-12.csv Hebron_metadata.csv -o /tmp/out3
+          cd ../HalifaxCitadel
+          csv2sef convert HalifaxCitadel_1863-1865.csv HalifaxCitadel_metadata.csv -o /tmp/out4
