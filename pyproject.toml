@@ -13,7 +13,7 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 dependencies = [
-    "cdrutilities>=1.0.1",
+    "cdrutilities>=1.0.2",
 ]
 license = "MIT"
 license-files = ["LICEN[CS]E*"]
