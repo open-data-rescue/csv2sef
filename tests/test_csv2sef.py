@@ -93,6 +93,11 @@ class TestConversions(unittest.TestCase):
         self.assertEqual(conv("hidden", "hd", "dir")[:3], ("hidden", "hidden", None))
         self.assertEqual(conv("Haze", "hd", "dir")[0], "hidden")
         self.assertEqual(conv("clear", "cd", "dir")[:3], ("no clouds", "clear", "Calm"))
+        self.assertEqual(conv("none", "hd", "dir")[:3], ("no clouds", "none", "Calm"))     # cloud columns
+        self.assertEqual(conv("none", "cl", "lct")[2], "Cl0")
+        self.assertEqual(conv("None", "ch", "uct")[2], "Ch0")
+        self.assertEqual(conv("none", "dd", "dir")[0], "missing")                          # other columns
+        self.assertEqual(conv("none", "ta", "F")[0], "missing")
         self.assertEqual(conv("clear", "dd", "dir")[0], "unmapped")          # wind: not a cloud
         self.assertEqual(conv("north-west", "hd", "dir")[2], 315)
         self.assertEqual(conv("calm", "dd", "dir")[2], "Calm")

@@ -56,6 +56,8 @@ class Logger:
 # Missing / invalid values (Table 7)
 # --------------------------------------------------------------------------
 MISSING_EXACT = {"", "-", "--", "m", "na", "n/a", "nan", "missing", "none"}
+# cloud type and cloud direction: "none" means no clouds (Table 5), not missing
+CLOUD_TYPE_DIR_VARS = {"c", "cl", "ch", "cd", "hd"}
 MISSING_TERMS = ["not.taken", "not taken", "unknown symbol", "retracted", "-999",
                  "no grass", "no place", "suspended", "abt on duty"]
 INSTRUMENT_ERROR_TERMS = ["out of order", "out.of.order", "broken", "unserviceable", "-888",
@@ -78,7 +80,7 @@ def pre_screen(value, var, unit, ctx, log):
         if unit in EMPTY_TOKEN_VALUE and var != "eee":
             return "ok", EMPTY_TOKEN_VALUE[unit], "no entry"
         return "stop", None, "missing"
-    if vl in MISSING_EXACT:
+    if vl in MISSING_EXACT and not (vl == "none" and var in CLOUD_TYPE_DIR_VARS):
         return "stop", None, "missing"
     if unit == "text":
         return "ok", v, None                      # free text is kept verbatim
@@ -483,7 +485,7 @@ ABBR_TO_DEG.update({"northeast": 45, "northwest": 315, "southeast": 135, "southw
 
 # Table 5: "hidden" - fog or thick lower clouds hide the higher clouds, so their direction can't be seen
 HIDDEN_WORDS = {"hidden", "obscured", "haze", "hazy", "fog", "foggy", "smoke", "mist"}
-NO_CLOUD_WORDS = {"clear", "no clouds", "cloudless"}
+NO_CLOUD_WORDS = {"clear", "none", "no clouds", "cloudless"}
 
 
 def c_dir(v, var, ctx, log, opts):
@@ -496,7 +498,7 @@ def c_dir(v, var, ctx, log, opts):
     if vl in HIDDEN_WORDS:
         return "hidden", v, None                        # clouds hidden: direction can't be seen
     if vl in NO_CLOUD_WORDS and var != "dd":
-        return "no clouds", v, "Calm"                   # same value as "none", flagged
+        return "no clouds", v, "Calm"                   # no clouds: Calm, flagged
     if vl in ("calm", "c", "0", "none", "not perceptible", "imp", "calme"):
         return None, v, "Calm"
     if vl.startswith("var"):
@@ -516,6 +518,8 @@ def c_dir(v, var, ctx, log, opts):
 
 
 def _cloudtype(v, var, ctx, log, opts, upper):
+    if v.strip().lower() in NO_CLOUD_WORDS:
+        return None, v, "Ch0" if upper else "Cl0"       # Table 5: None; Clear = 0
     if opts.get("keep_wind_cloud_type"):
         code = im.abbr_cloud.get(v.lower(), "-999")
     else:

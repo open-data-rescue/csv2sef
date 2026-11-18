@@ -140,3 +140,6 @@ id,category,var,unit,input,expected,expected_flag,tolerance,opts,source,note,sta
 139,direction,hd,dir,-999,NA,missing,,,missing-value code (issue #7),,formula
 140,direction,hd,dir,hidden,NA,hidden,,,clouds hidden by fog or thick lower clouds (Table 5); issue #7,,formula
 141,direction,cd,dir,clear,Calm,no clouds,,,"no clouds: same value as 'none', flagged (Victoria 2026-11-18); issue #7",,formula
+142,cloud,hd,dir,none,Calm,no clouds,,,none in a cloud column = no clouds (Victoria 2026-11-18),,formula
+143,cloud,cl,lct,none,Cl0,,,,Table 5: None; Clear = Cl0,,formula
+144,direction,dd,dir,none,NA,missing,,,none in other columns = missing (Table 7),,formula
