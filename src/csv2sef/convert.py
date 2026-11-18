@@ -58,7 +58,7 @@ class Logger:
 MISSING_EXACT = {"", "-", "--", "m", "na", "n/a", "nan", "missing", "none"}
 # cloud type, direction and amount: "none" means no clouds (Table 5), not missing
 CLOUD_TYPE_DIR_VARS = {"c", "cl", "ch", "cd", "hd", "n", "nl", "nh", "hl"}
-MISSING_TERMS = ["not.taken", "not taken", "unknown symbol", "retracted", "-999",
+MISSING_TERMS = ["not.taken", "not taken", "unknown symbol", "retracted", "redacted", "-999",
                  "no grass", "no place", "suspended", "abt on duty"]
 INSTRUMENT_ERROR_TERMS = ["out of order", "out.of.order", "broken", "unserviceable", "-888",
                           "incorrect", "not reliable", "covered in snow", "covered with snow",
@@ -343,12 +343,18 @@ def c_percent(v, var, ctx, log, opts):
 
 
 def _scale(v, ctx, log, top, name):
+    """Scale value -> (whole force, in range?, flag). Fractions ('1/2', '1 1/2') are rounded down."""
     from fractions import Fraction as Fr
-    s = int(float(sum(Fr(x) for x in v.replace(",", " ").split())))
+    total = sum(Fr(x) for x in v.replace(",", " ").split())
+    s = int(total)
+    flag = None
+    if total != s:
+        flag = "fraction rounded down"
+        log.write(ctx, "NOTATION", f"{name} '{v}': no fractions on this scale, rounded down to {s}")
     if s < 0 or s > top:
         log.write(ctx, "RANGE", f"{name} {s}: out of range")
-        return s, False
-    return s, True
+        return s, False, flag
+    return s, True, flag
 
 
 def _force_part(v, ctx, log):
@@ -367,20 +373,20 @@ def c_Sm(v, var, ctx, log, opts):
     v = _force_part(v, ctx, log)
     if not re.search(r"\d", v):
         return c_words(v, var, ctx, log, opts)       # descriptive term in a numeric column
-    s, ok = _scale(v, ctx, log, 10, "Smithsonian force")
+    s, ok, flag = _scale(v, ctx, log, 10, "Smithsonian force")
     if not ok:
         return "out of range", s, None
-    return None, s, _r(im.convertSmithsonian(s), 1)       # Table 4: nominal mph -> m/s
+    return flag, s, _r(im.convertSmithsonian(s), 1)       # Table 4: nominal mph -> m/s
 
 
 def c_Bf(v, var, ctx, log, opts):
     v = _force_part(v, ctx, log)
     if not re.search(r"\d", v):
         return c_words(v, var, ctx, log, opts)
-    b, ok = _scale(v, ctx, log, 12, "Beaufort force")
+    b, ok, flag = _scale(v, ctx, log, 12, "Beaufort force")
     if not ok:
         return "out of range", b, None
-    return None, b, _r(im.convertBeaufort(b), 1)
+    return flag, b, _r(im.convertBeaufort(b), 1)
 
 
 def c_words(v, var, ctx, log, opts):

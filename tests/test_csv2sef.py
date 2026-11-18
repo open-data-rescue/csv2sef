@@ -108,7 +108,9 @@ class TestConversions(unittest.TestCase):
         """Issue #6: direction and force in one cell ('south 1'), as in Red River 1844-45."""
         self.assertEqual(conv("south 1", "w", "Sm")[:2], (None, 1))
         self.assertEqual(conv("north-west 2", "w", "Sm")[1], 2)
-        self.assertEqual(conv("South-East 1/2", "w", "Sm")[1], 0)          # half a force: rounded down
+        self.assertEqual(conv("South-East 1/2", "w", "Sm")[:2], ("fraction rounded down", 0))
+        self.assertEqual(conv("2 1/2", "w", "Bf")[:2], ("fraction rounded down", 2))
+        self.assertEqual(conv("redacted", "cv", "cloudvel")[0], "missing")
         self.assertEqual(conv("N 3", "w", "Bf")[1], 3)
         self.assertEqual(conv("south 1", "dd", "dir")[2], 180)            # the direction part, as before
         self.assertEqual(conv("fresh 1", "w", "Sm")[0], "invalid")        # not a direction: unchanged
